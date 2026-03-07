@@ -937,6 +937,413 @@ i {
 }
 
 /* ==========================================================================
+   Four Pillars Section
+   ========================================================================== */
+.pillars-section {
+    background-color: var(--color-bg);
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.pillar-card {
+    position: relative;
+    background: var(--color-white);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    text-decoration: none;
+    color: var(--color-primary);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(.4, 0, .2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--pillar-color, var(--color-primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(.4, 0, .2, 1);
+}
+
+.pillar-card:hover::before {
+    transform: scaleX(1);
+}
+
+.pillar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.pillar-number {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--pillar-color, var(--color-text-light));
+    opacity: 0.5;
+    letter-spacing: 0.05em;
+}
+
+.pillar-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--pillar-color) 12%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: var(--pillar-color, var(--color-primary));
+    transition: all 0.4s ease;
+}
+
+.pillar-card:hover .pillar-icon-wrap {
+    background: var(--pillar-color, var(--color-primary));
+    color: white;
+    transform: scale(1.1);
+}
+
+.pillar-card h3 {
+    font-size: 1.4rem;
+    margin-top: 0.25rem;
+}
+
+.pillar-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    flex: 1;
+}
+
+.pillar-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--pillar-color, var(--color-primary));
+    margin-top: 0.5rem;
+    transition: gap 0.3s ease;
+}
+
+.pillar-card:hover .pillar-cta {
+    gap: 0.85rem;
+}
+
+/* ==========================================================================
+   Trusted Brands Marquee
+   ========================================================================== */
+.brands-section {
+    padding: 2.5rem 0;
+    background: var(--color-primary);
+    overflow: hidden;
+}
+
+.brands-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.brands-header p {
+    font-family: var(--font-heading);
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.brands-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.brands-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+}
+
+.brand-item {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+    padding: 0 1rem;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease;
+}
+
+.brand-item:hover {
+    color: white;
+}
+
+.brand-dot {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.75rem;
+    padding: 0 0.5rem;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ==========================================================================
+   Curation Process Section
+   ========================================================================== */
+.curation-section {
+    background: var(--color-white);
+}
+
+.curation-steps {
+    display: flex;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+.curation-card {
+    flex: 1;
+    max-width: 340px;
+    background: var(--color-bg);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.curation-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.curation-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    opacity: 0.08;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    line-height: 1;
+}
+
+.curation-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--color-energy) 12%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-energy);
+    margin-bottom: 1.25rem;
+}
+
+.curation-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.curation-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+}
+
+.curation-arrow {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    opacity: 0.3;
+}
+
+/* ==========================================================================
+   Testimonials Section
+   ========================================================================== */
+.testimonials-section {
+    overflow: hidden;
+}
+
+.bg-light {
+    background-color: var(--color-bg);
+}
+
+.testimonials-track-wrapper {
+    margin-top: 3rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 1rem;
+}
+
+.testimonials-track-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: testimonial-scroll 40s linear infinite;
+}
+
+.testimonials-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes testimonial-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.testimonial-card {
+    flex: 0 0 340px;
+    scroll-snap-align: start;
+    background: var(--color-white);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 2px;
+    color: #f59e0b;
+    font-size: 1.1rem;
+}
+
+.testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    flex: 1;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.testimonial-author strong {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.testimonial-author span {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+/* ==========================================================================
+   Trust Promise Bar
+   ========================================================================== */
+.trust-section {
+    padding: 3rem 0;
+    background: var(--color-white);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.trust-promise {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.trust-promise>i {
+    font-size: 2rem;
+    color: var(--color-energy);
+    flex-shrink: 0;
+}
+
+.trust-promise div {
+    display: flex;
+    flex-direction: column;
+}
+
+.trust-promise strong {
+    font-size: 0.9rem;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+}
+
+.trust-promise span {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-top: 0.15rem;
+}
+
+/* ==========================================================================
    Brand Ethos Section
    ========================================================================== */
 .ethos-section {
@@ -1141,6 +1548,22 @@ i {
         text-align: center;
         gap: 2rem;
     }
+
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .curation-steps {
+        flex-wrap: wrap;
+    }
+
+    .curation-arrow {
+        display: none;
+    }
+
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -1164,5 +1587,18 @@ i {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .testimonial-card {
+        flex: 0 0 280px;
     }
 }

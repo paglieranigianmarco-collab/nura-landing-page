@@ -25,6 +25,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let supplements = loadSupplements();
     let checkins = loadCheckins();
     let currentWeekOffset = 0; // 0 = this week
+    let notifiedThisSession = new Set(); // track which supplements we already notified about
+
+    // ─── Browser Notifications ───────────────────────────────
+    function requestNotificationPermission() {
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+    }
+
+    function sendLowSupplyNotifications() {
+        if (!('Notification' in window) || Notification.permission !== 'granted') return;
+
+        const lowSupps = supplements.filter(isLowSupply);
+        lowSupps.forEach(s => {
+            if (notifiedThisSession.has(s.id)) return;
+            notifiedThisSession.add(s.id);
+
+            const remaining = getRemainingPills(s);
+            const days = getRemainingDays(s);
+
+            new Notification('⚠️ NURA — Integratore in Esaurimento', {
+                body: `${s.name}: ${remaining} pillole rimaste (~${days} giorni). Riordina ora!`,
+                icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💊</text></svg>',
+                tag: `nura-low-${s.id}`,
+                requireInteraction: false
+            });
+        });
+    }
+
+    // Request permission immediately
+    requestNotificationPermission();
 
     // ─── DOM References ───────────────────────────────────────
     const modalOverlay = document.getElementById('modalOverlay');
@@ -544,6 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderAlerts();
         renderCalendar();
         renderSupplementsList();
+        sendLowSupplyNotifications();
     }
 
     // Initial render
