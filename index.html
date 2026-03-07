@@ -60,11 +60,11 @@
             </nav>
 
             <div class="header-actions">
-                <a href="#" class="action-btn"><i class="ph ph-magnifying-glass"></i></a>
-                <a href="#" class="action-btn"><i class="ph ph-user"></i></a>
-                <a href="#" class="action-btn cart-btn">
+                <a href="#" class="action-btn" id="searchToggle"><i class="ph ph-magnifying-glass"></i></a>
+                <a href="#" class="action-btn" id="profileToggle"><i class="ph ph-user"></i></a>
+                <a href="#" class="action-btn cart-btn" id="cartToggle">
                     <i class="ph ph-shopping-bag"></i>
-                    <span class="cart-count">2</span>
+                    <span class="cart-count" id="cartBadge">2</span>
                 </a>
             </div>
         </div>
@@ -189,8 +189,8 @@
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <span class="tag tag-new">Bestseller</span>
-                            <div class="product-image mock-image p-bg-1">
-                                <i class="ph ph-bottle"></i>
+                            <div class="product-image">
+                                <img src="images/product-neuro.png" alt="Neuro Protocol" loading="lazy">
                             </div>
                             <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
                         </div>
@@ -212,8 +212,8 @@
                     <!-- Product 2 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
-                            <div class="product-image mock-image p-bg-2">
-                                <i class="ph ph-pill"></i>
+                            <div class="product-image">
+                                <img src="images/product-sleep.png" alt="Deep Rest Formula" loading="lazy">
                             </div>
                             <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
                         </div>
@@ -236,8 +236,8 @@
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <span class="tag tag-trend">Trending</span>
-                            <div class="product-image mock-image p-bg-3">
-                                <i class="ph ph-drop"></i>
+                            <div class="product-image">
+                                <img src="images/product-nad.png" alt="NAD+ Booster" loading="lazy">
                             </div>
                             <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
                         </div>
@@ -259,8 +259,8 @@
                     <!-- Product 4 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
-                            <div class="product-image mock-image p-bg-4">
-                                <i class="ph ph-barbell"></i>
+                            <div class="product-image">
+                                <img src="images/product-recovery.png" alt="Recovery Aminos" loading="lazy">
                             </div>
                             <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
                         </div>
@@ -643,6 +643,98 @@
             </div>
         </div>
     </footer>
+
+    <!-- Overlay Backdrop -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- Profile Drawer -->
+    <div class="drawer drawer-right" id="profileDrawer">
+        <div class="drawer-header">
+            <h3><i class="ph ph-user-circle" style="display:inline;margin-right:6px"></i> Il Mio Profilo</h3>
+            <button class="drawer-close" data-close-drawer><i class="ph ph-x"></i></button>
+        </div>
+        <div class="drawer-body">
+            <div class="profile-avatar">
+                <div class="avatar-circle"><i class="ph ph-user"></i></div>
+                <h4>Ospite</h4>
+                <p>Accedi per salvare le tue preferenze</p>
+            </div>
+            <form class="profile-form" id="profileForm">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" placeholder="Il tuo nome" id="profileName">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="la-tua@email.com" id="profileEmail">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:1rem;">Salva Profilo</button>
+            </form>
+            <div class="profile-links">
+                <a href="routine.html"><i class="ph ph-calendar-check"></i> La Mia Routine</a>
+                <a href="quiz.html"><i class="ph ph-sparkle"></i> Fai il Quiz Wellness</a>
+                <a href="#"><i class="ph ph-heart"></i> I Miei Preferiti</a>
+                <a href="#"><i class="ph ph-package"></i> I Miei Ordini</a>
+                <a href="#"><i class="ph ph-gear"></i> Impostazioni</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="drawer drawer-right" id="cartDrawer">
+        <div class="drawer-header">
+            <h3><i class="ph ph-shopping-bag" style="display:inline;margin-right:6px"></i> Carrello <span
+                    class="cart-header-count">(2)</span></h3>
+            <button class="drawer-close" data-close-drawer><i class="ph ph-x"></i></button>
+        </div>
+        <div class="drawer-body">
+            <div class="cart-items" id="cartItems">
+                <div class="cart-item">
+                    <img src="images/product-neuro.png" alt="Neuro Protocol" class="cart-item-img">
+                    <div class="cart-item-info">
+                        <h5>Neuro Protocol</h5>
+                        <p class="cart-item-vendor">NURA Core</p>
+                        <div class="cart-item-qty">
+                            <button class="qty-btn" data-action="minus">−</button>
+                            <span class="qty-value">1</span>
+                            <button class="qty-btn" data-action="plus">+</button>
+                        </div>
+                    </div>
+                    <div class="cart-item-price">€45.00</div>
+                </div>
+                <div class="cart-item">
+                    <img src="images/product-sleep.png" alt="Deep Rest Formula" class="cart-item-img">
+                    <div class="cart-item-info">
+                        <h5>Deep Rest Formula</h5>
+                        <p class="cart-item-vendor">NURA Sleep</p>
+                        <div class="cart-item-qty">
+                            <button class="qty-btn" data-action="minus">−</button>
+                            <span class="qty-value">1</span>
+                            <button class="qty-btn" data-action="plus">+</button>
+                        </div>
+                    </div>
+                    <div class="cart-item-price">€38.00</div>
+                </div>
+            </div>
+            <div class="cart-upsell">
+                <p><i class="ph ph-gift" style="display:inline;margin-right:4px;"></i> Aggiungi €17.00 per la spedizione
+                    gratuita!</p>
+                <div class="upsell-bar">
+                    <div class="upsell-fill" style="width:66%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="drawer-footer">
+            <div class="cart-subtotal">
+                <span>Subtotale</span>
+                <span class="subtotal-amount">€83.00</span>
+            </div>
+            <button class="btn btn-primary" style="width:100%">Procedi al Checkout</button>
+            <p class="cart-note">Spedizione gratuita per ordini sopra €50</p>
+        </div>
+    </div>
+
+    <script src="drawers.js"></script>
 </body>
 
 </html>
