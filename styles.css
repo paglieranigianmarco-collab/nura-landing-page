@@ -2642,3 +2642,59 @@ i {
         font-size: 1.3rem;
     }
 }
+
+/* ==========================================================================
+   Simple Premium Intro Animation Overlay
+   ========================================================================== */
+.simple-intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f7f6f2;
+    /* Matches the site's warm off-white/earthy tones */
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.intro-logo-container {
+    overflow: hidden;
+    /* For any sliding text effect */
+}
+
+.intro-brand {
+    font-family: var(--font-heading);
+    /* Keeping it consistent with Poppins/Sora, or default */
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: var(--color-primary);
+    text-transform: lowercase;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealLogo 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes revealLogo {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.simple-intro-overlay.hide-intro {
+    opacity: 0;
+    transform: translateY(-5vh);
+    /* Slight slide up when fading out */
+    pointer-events: none;
+}

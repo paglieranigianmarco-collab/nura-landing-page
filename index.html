@@ -25,6 +25,29 @@
 </head>
 
 <body>
+    <!-- Simple Premium Intro Animation -->
+    <div id="simple-intro" class="simple-intro-overlay">
+        <div class="intro-logo-container">
+            <span class="intro-brand">nura</span>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const intro = document.getElementById('simple-intro');
+            if (intro) {
+                // Prevent scrolling during intro
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    intro.classList.add('hide-intro');
+                    setTimeout(() => {
+                        intro.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }, 800); // matches CSS transition duration
+                }, 2000); // 2 seconds of pure logo display
+            }
+        });
+    </script>
+
     <!-- Dynamic Site Background -->
     <div class="site-bg" aria-hidden="true">
         <div class="site-orb orb-1"></div>
@@ -58,7 +81,7 @@
                 <i class="ph ph-list"></i>
             </div>
 
-            <a href="#" class="brand-logo">nura.</a>
+            <a href="#" class="brand-logo">nura</a>
 
             <nav class="desktop-nav">
                 <ul class="nav-links">
@@ -657,7 +680,7 @@
     <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <a href="#" class="brand-logo">nura.</a>
+                <a href="#" class="brand-logo">nura</a>
                 <p>Eleva la tua routine quotidiana. <br>Design italo-europeo. <br>Scienza globale.</p>
                 <div class="social-links">
                     <a href="#"><i class="ph ph-instagram-logo"></i></a>
