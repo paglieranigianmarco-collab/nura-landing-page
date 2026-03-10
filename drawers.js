@@ -126,6 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 btn.innerHTML = '<i class="ph ph-plus"></i>';
             }, 1500);
+            // Toast feedback
+            const productName = btn.closest('.product-card')?.querySelector('.product-name')?.textContent || 'Prodotto';
+            if (typeof window.showToast === 'function') {
+                window.showToast(`${productName} aggiunto al carrello`, 'success', 'ph-shopping-bag');
+            }
             // Open cart
             setTimeout(() => openDrawer(cartDrawer), 300);
         });

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nura | La Tua Destinazione Wellness Premium</title>
+    <title>nura | La Tua Curation Premium di Wellness</title>
     <meta name="description"
-        content="Esplora nura: Il brand italiano leader per la vitalità quotidiana. Prodotti per la longevità, sonno, energia e salute dell'intestino basati sulla scienza.">
+        content="Esplora nura: Ti guidiamo nel tuo percorso personale verso la longevità, il sonno riposante, l'energia e la salute ottimale con i migliori brand al mondo.">
 
     <!-- Fonts: DM Sans for clean body text, Sora for premium geometric headings (healf.com inspired) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,32 +21,18 @@
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
     <!-- JS -->
+    <script defer src="intro-canvas.js"></script>
     <script defer src="script.js"></script>
 </head>
 
 <body>
-    <!-- Simple Premium Intro Animation -->
+    <!-- Premium Health/Cellular Intro Animation -->
     <div id="simple-intro" class="simple-intro-overlay">
+        <canvas id="intro-canvas" class="intro-bg-canvas"></canvas>
         <div class="intro-logo-container">
             <span class="intro-brand">nura</span>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const intro = document.getElementById('simple-intro');
-            if (intro) {
-                // Prevent scrolling during intro
-                document.body.style.overflow = 'hidden';
-                setTimeout(() => {
-                    intro.classList.add('hide-intro');
-                    setTimeout(() => {
-                        intro.style.display = 'none';
-                        document.body.style.overflow = '';
-                    }, 800); // matches CSS transition duration
-                }, 2000); // 2 seconds of pure logo display
-            }
-        });
-    </script>
 
     <!-- Dynamic Site Background -->
     <div class="site-bg" aria-hidden="true">
@@ -62,15 +48,15 @@
     <div class="announcement-bar-wrapper">
         <div class="announcement-marquee">
             <span>SPEDIZIONE GRATUITA OLTRE 50€ <i class="ph-fill ph-truck"></i></span>
-            <span>-15% CON ABBONAMENTO <i class="ph-fill ph-repeat"></i></span>
-            <span>100.000+ CLIENTI SODDISFATTI <i class="ph-fill ph-star"></i></span>
-            <span>RESO GRATUITO ENTRO 30 GIORNI <i class="ph-fill ph-shield-check"></i></span>
-            <span>FORMULAZIONI BASATE SULLA SCIENZA <i class="ph-fill ph-flask"></i></span>
+            <span>RESI GRATUITI 365 GIORNI <i class="ph-fill ph-shield-check"></i></span>
+            <span>LA TUA DESTINAZIONE PER IL BENESSERE <i class="ph-fill ph-sparkle"></i></span>
+            <span>SPEDIZIONE RAPIDA GARANTITA <i class="ph-fill ph-timer"></i></span>
+            <span>I MIGLIORI BRAND AL MONDO <i class="ph-fill ph-globe"></i></span>
             <span>SPEDIZIONE GRATUITA OLTRE 50€ <i class="ph-fill ph-truck"></i></span>
-            <span>-15% CON ABBONAMENTO <i class="ph-fill ph-repeat"></i></span>
-            <span>100.000+ CLIENTI SODDISFATTI <i class="ph-fill ph-star"></i></span>
-            <span>RESO GRATUITO ENTRO 30 GIORNI <i class="ph-fill ph-shield-check"></i></span>
-            <span>FORMULAZIONI BASATE SULLA SCIENZA <i class="ph-fill ph-flask"></i></span>
+            <span>RESI GRATUITI 365 GIORNI <i class="ph-fill ph-shield-check"></i></span>
+            <span>LA TUA DESTINAZIONE PER IL BENESSERE <i class="ph-fill ph-sparkle"></i></span>
+            <span>SPEDIZIONE RAPIDA GARANTITA <i class="ph-fill ph-timer"></i></span>
+            <span>I MIGLIORI BRAND AL MONDO <i class="ph-fill ph-globe"></i></span>
         </div>
     </div>
 
@@ -89,46 +75,46 @@
                         <a href="#categories" class="dropdown-trigger">Shop <i class="ph ph-caret-down"></i></a>
                         <div class="dropdown-menu">
                             <div class="dropdown-grid">
-                                <a href="#categories" class="dropdown-item">
+                                <a href="#pillars" class="dropdown-item">
                                     <i class="ph ph-leaf" style="color:var(--color-gut)"></i>
                                     <div>
-                                        <strong>Gut Health</strong>
-                                        <span>Equilibrio del microbioma</span>
+                                        <strong>Nutrizione (EAT)</strong>
+                                        <span>Il fondamento del tuo corpo</span>
                                     </div>
                                 </a>
-                                <a href="#categories" class="dropdown-item">
-                                    <i class="ph ph-moon-stars" style="color:var(--color-sleep)"></i>
-                                    <div>
-                                        <strong>Sleep</strong>
-                                        <span>Riposo profondo</span>
-                                    </div>
-                                </a>
-                                <a href="#categories" class="dropdown-item">
+                                <a href="#pillars" class="dropdown-item">
                                     <i class="ph ph-lightning" style="color:var(--color-energy)"></i>
                                     <div>
-                                        <strong>Energy</strong>
-                                        <span>Vitalità quotidiana</span>
+                                        <strong>Movimento (MOVE)</strong>
+                                        <span>Forza, recupero, vitalità</span>
                                     </div>
                                 </a>
-                                <a href="#categories" class="dropdown-item">
+                                <a href="#pillars" class="dropdown-item">
                                     <i class="ph ph-brain" style="color:var(--color-brain)"></i>
                                     <div>
-                                        <strong>Brain</strong>
-                                        <span>Focus e chiarezza</span>
+                                        <strong>Mente (MIND)</strong>
+                                        <span>Focus e chiarezza cognitiva</span>
                                     </div>
                                 </a>
-                                <a href="#categories" class="dropdown-item">
-                                    <i class="ph ph-dna" style="color:var(--color-longevity)"></i>
+                                <a href="#pillars" class="dropdown-item">
+                                    <i class="ph ph-moon-stars" style="color:var(--color-sleep)"></i>
                                     <div>
-                                        <strong>Longevity</strong>
-                                        <span>Anti-aging cellulare</span>
+                                        <strong>Sonno (SLEEP)</strong>
+                                        <span>Riposo profondo e ristoratore</span>
                                     </div>
                                 </a>
-                                <a href="#categories" class="dropdown-item">
-                                    <i class="ph ph-barbell" style="color:var(--color-fitness)"></i>
+                                <a href="#featured" class="dropdown-item">
+                                    <i class="ph ph-star" style="color:var(--color-longevity)"></i>
                                     <div>
-                                        <strong>Fitness Recovery</strong>
-                                        <span>Recupero muscolare</span>
+                                        <strong>Bestsellers</strong>
+                                        <span>I più amati dalla community</span>
+                                    </div>
+                                </a>
+                                <a href="#brands" class="dropdown-item">
+                                    <i class="ph ph-globe" style="color:var(--color-fitness)"></i>
+                                    <div>
+                                        <strong>Tutti i Brand</strong>
+                                        <span>La nostra cura globale</span>
                                     </div>
                                 </a>
                             </div>
@@ -169,17 +155,16 @@
             </div>
 
             <div class="hero-content container reveal-up">
-                <span class="hero-badge reveal-item">Nuova Era del Wellness</span>
-                <h1 class="hero-title reveal-item" style="transition-delay: 100ms;">Ottimizza la Tua<br>Vitalità
-                    Quotidiana</h1>
-                <p class="hero-description reveal-item" style="transition-delay: 200ms;">nura seleziona gli strumenti e
-                    gli integratori d'avanguardia per elevarti fisicamente e mentalmente. Benvenuto nel tuo nuovo
-                    standard di salute.</p>
+                <span class="hero-badge reveal-item">La tua destinazione per il benessere</span>
+                <h1 class="hero-title reveal-item" style="transition-delay: 100ms;">Risposte, non<br>supposizioni.</h1>
+                <p class="hero-description reveal-item" style="transition-delay: 200ms;">La nostra missione è potenziare
+                    il tuo benessere, qualunque forma assuma per te. Nura ti connette ai migliori brand al mondo,
+                    offrendoti gli strumenti per prendere il controllo della tua salute.</p>
 
                 <div class="hero-cta-group reveal-item" style="transition-delay: 300ms;">
-                    <a href="#categories" class="btn btn-primary btn-glow">Esplora la Collezione <i
+                    <a href="#pillars" class="btn btn-primary btn-glow">Acquista per Obiettivo <i
                             class="ph ph-arrow-right"></i></a>
-                    <a href="quiz.html" class="btn btn-secondary">Inizia il Quiz</a>
+                    <a href="quiz.html" class="btn btn-secondary">Rispondi al Quiz</a>
                 </div>
 
                 <div class="hero-trust-badges reveal-item" style="transition-delay: 400ms;">
@@ -193,69 +178,101 @@
             </div>
         </section>
 
+        <!-- Goal Filter Strip -->
+        <section class="goal-filter-strip">
+            <div class="goal-filter-inner">
+                <a href="#pillars" class="goal-chip active">
+                    <span class="chip-emoji">✨</span> Tutti
+                </a>
+                <a href="#pillars" class="goal-chip">
+                    <span class="chip-emoji">🌿</span> Intestino
+                </a>
+                <a href="#pillars" class="goal-chip">
+                    <span class="chip-emoji">⚡</span> Energia
+                </a>
+                <a href="#pillars" class="goal-chip">
+                    <span class="chip-emoji">🌙</span> Sonno
+                </a>
+                <a href="#pillars" class="goal-chip">
+                    <span class="chip-emoji">🧠</span> Focus
+                </a>
+                <a href="#pillars" class="goal-chip">
+                    <span class="chip-emoji">🔬</span> Longevità
+                </a>
+                <a href="#pillars" class="goal-chip">
+                    <span class="chip-emoji">💪</span> Recovery
+                </a>
+                <a href="#pillars" class="goal-chip">
+                    <span class="chip-emoji">❤️</span> Immunità
+                </a>
+            </div>
+        </section>
+
         <!-- Brand Ethos Marquee (Optional for vibrant style) -->
         <div class="marquee-section">
             <div class="marquee-content">
-                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> •
-                <span>DESIGN ITALIANO</span> •
-                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> •
-                <span>DESIGN ITALIANO</span> •
-                <span>SCIENZA CONTEMPORANEA</span> • <span>VITALITÀ QUOTIDIANA</span> • <span>QUALITÀ CURATA</span> •
-                <span>DESIGN ITALIANO</span> •
+                <span>CURATED PREMIUM QUALITY</span> • <span>YOUR PERSONAL JOURNEY</span> • <span>THE BEST FOR
+                    YOURSELF</span> •
+                <span>SCIENCE & SELF-LOVE</span> •
+                <span>CURATED PREMIUM QUALITY</span> • <span>YOUR PERSONAL JOURNEY</span> • <span>THE BEST FOR
+                    YOURSELF</span> •
+                <span>SCIENCE & SELF-LOVE</span> •
+                <span>CURATED PREMIUM QUALITY</span> • <span>YOUR PERSONAL JOURNEY</span> • <span>THE BEST FOR
+                    YOURSELF</span> •
+                <span>SCIENCE & SELF-LOVE</span> •
             </div>
         </div>
 
-        <!-- 6 Core Categories Grid -->
-        <section id="categories" class="categories-section section-padding">
+        <!-- 4 Pillars Section (Healf aligned) -->
+        <section id="pillars" class="categories-section section-padding">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Soluzioni Mirate</h2>
-                    <a href="#" class="link-arrow">Vedi tutte le categorie <i class="ph ph-arrow-right"></i></a>
+                    <h2 class="section-title">I Quattro Pilastri™</h2>
+                    <a href="#" class="link-arrow">Esplora l'intera curation <i class="ph ph-arrow-right"></i></a>
                 </div>
+                <p style="color:var(--color-text-light); max-width:600px; margin-bottom: 2rem; display: block;">La
+                    nostra missione si fonda su I Quattro Pilastri™ - NUTRIZIONE, MOVIMENTO, MENTE, SONNO. Con questi
+                    come base, offriamo strumenti e rituali in ogni Pilastro per potenziare il tuo benessere.</p>
 
-                <div class="categories-grid">
-                    <!-- Gut Health -->
+                <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                    <!-- Eat -->
                     <a href="#" class="category-card" style="--card-color: var(--color-gut);">
                         <div class="card-icon"><i class="ph ph-leaf"></i></div>
-                        <h3 class="card-title">Gut Health</h3>
-                        <p class="card-desc">Equilibrio del microbioma</p>
+                        <h3 class="card-title">Nutrizione (EAT)</h3>
+                        <p class="card-desc">Tutto ciò di cui hai bisogno per nutrire il tuo corpo dall'interno.</p>
                         <div class="card-image-bg pattern-dots"></div>
+                    </a>
+                    <!-- Move -->
+                    <a href="#" class="category-card" style="--card-color: var(--color-fitness);">
+                        <div class="card-icon"><i class="ph ph-activity"></i></div>
+                        <h3 class="card-title">Movimento (MOVE)</h3>
+                        <p class="card-desc">Strumenti e integratori per ottimizzare il recupero e la performance.</p>
+                        <div class="card-image-bg pattern-lines"></div>
+                    </a>
+                    <!-- Mind -->
+                    <a href="#" class="category-card" style="--card-color: var(--color-brain);">
+                        <div class="card-icon"><i class="ph ph-brain"></i></div>
+                        <h3 class="card-title">Mente (MIND)</h3>
+                        <p class="card-desc">Supporto per focus, gestione dello stress e chiarezza mentale.</p>
+                        <div class="card-image-bg pattern-grid"></div>
                     </a>
                     <!-- Sleep -->
                     <a href="#" class="category-card" style="--card-color: var(--color-sleep);">
                         <div class="card-icon"><i class="ph ph-moon-stars"></i></div>
-                        <h3 class="card-title">Sleep</h3>
-                        <p class="card-desc">Riposo profondo e ristoratore</p>
+                        <h3 class="card-title">Sonno (SLEEP)</h3>
+                        <p class="card-desc">Il fondamento della salute. Tutto per un riposo profondo.</p>
                         <div class="card-image-bg pattern-waves"></div>
                     </a>
-                    <!-- Energy -->
-                    <a href="#" class="category-card" style="--card-color: var(--color-energy);">
-                        <div class="card-icon"><i class="ph ph-lightning"></i></div>
-                        <h3 class="card-title">Energy</h3>
-                        <p class="card-desc">Energia cellulare sostenuta</p>
-                        <div class="card-image-bg pattern-rays"></div>
-                    </a>
-                    <!-- Brain -->
-                    <a href="#" class="category-card" style="--card-color: var(--color-brain);">
-                        <div class="card-icon"><i class="ph ph-brain"></i></div>
-                        <h3 class="card-title">Brain</h3>
-                        <p class="card-desc">Focus e chiarezza mentale</p>
-                        <div class="card-image-bg pattern-grid"></div>
-                    </a>
-                    <!-- Longevity -->
-                    <a href="#" class="category-card" style="--card-color: var(--color-longevity);">
-                        <div class="card-icon"><i class="ph ph-dna"></i></div>
-                        <h3 class="card-title">Longevity</h3>
-                        <p class="card-desc">Longevità e anti-aging</p>
-                        <div class="card-image-bg pattern-rings"></div>
-                    </a>
-                    <!-- Fitness Recovery -->
-                    <a href="#" class="category-card" style="--card-color: var(--color-fitness);">
-                        <div class="card-icon"><i class="ph ph-activity"></i></div>
-                        <h3 class="card-title">Fitness Recovery</h3>
-                        <p class="card-desc">Recupero muscolare ottimale</p>
-                        <div class="card-image-bg pattern-lines"></div>
-                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Introduction Section (Healf aligned) -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header" style="justify-content:center; text-align:center;">
+                    <h2 class="section-title" style="max-width: 800px; font-size: 2.2rem;">Il benessere assume forme
+                        diverse per ognuno di noi. Noi lo rispettiamo—anzi, lo celebriamo.</h2>
                 </div>
             </div>
         </section>
@@ -276,16 +293,23 @@
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <span class="tag tag-new">Bestseller</span>
+                            <button class="wishlist-btn" aria-label="Aggiungi ai preferiti"><i class="ph ph-heart"></i></button>
                             <div class="product-image">
-                                <img src="images/product-neuro.png" alt="Neuro Protocol" loading="lazy">
+                                <img src="images/product-neuro.png" alt="Nura Signature | The Gut Protocol"
+                                    loading="lazy">
                             </div>
                             <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
                         </div>
                         <div class="product-info">
-                            <div class="product-vendor">nura Core</div>
-                            <h4 class="product-name">Neuro Protocol</h4>
+                            <div class="product-vendor">nura x Thorne</div>
+                            <h4 class="product-name">The Gut Protocol</h4>
+                            <p class="product-editorial">Formula simbiotica a 4 ceppi per un microbioma in equilibrio.</p>
+                            <div class="subscription-toggle">
+                                <button class="sub-opt active" data-price="65.00" data-sub-price="55.25">Una Volta</button>
+                                <button class="sub-opt" data-price="65.00" data-sub-price="55.25">Abbonati <span class="sub-save">−15%</span></button>
+                            </div>
                             <div class="product-price">
-                                <span class="current-price">€45.00</span>
+                                <span class="current-price">€65.00</span>
                             </div>
                             <div class="product-rating">
                                 <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
@@ -299,16 +323,23 @@
                     <!-- Product 2 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
+                            <button class="wishlist-btn" aria-label="Aggiungi ai preferiti"><i class="ph ph-heart"></i></button>
                             <div class="product-image">
-                                <img src="images/product-sleep.png" alt="Deep Rest Formula" loading="lazy">
+                                <img src="images/product-sleep.png" alt="Nura Signature | Deep Cellular Rest"
+                                    loading="lazy">
                             </div>
                             <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
                         </div>
                         <div class="product-info">
-                            <div class="product-vendor">nura Sleep</div>
-                            <h4 class="product-name">Deep Rest Formula</h4>
+                            <div class="product-vendor">nura x Huberman</div>
+                            <h4 class="product-name">Deep Cellular Rest</h4>
+                            <p class="product-editorial">Magnesio L-treonato + apigenina per un sonno profondo e ristoratore.</p>
+                            <div class="subscription-toggle">
+                                <button class="sub-opt active" data-price="48.00" data-sub-price="40.80">Una Volta</button>
+                                <button class="sub-opt" data-price="48.00" data-sub-price="40.80">Abbonati <span class="sub-save">−15%</span></button>
+                            </div>
                             <div class="product-price">
-                                <span class="current-price">€38.00</span>
+                                <span class="current-price">€48.00</span>
                             </div>
                             <div class="product-rating">
                                 <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
@@ -323,16 +354,23 @@
                     <div class="product-card">
                         <div class="product-image-wrapper">
                             <span class="tag tag-trend">Trending</span>
+                            <button class="wishlist-btn" aria-label="Aggiungi ai preferiti"><i class="ph ph-heart"></i></button>
                             <div class="product-image">
-                                <img src="images/product-nad.png" alt="NAD+ Booster" loading="lazy">
+                                <img src="images/product-nad.png" alt="Nura Signature | Ultimate NAD+ Lifespan"
+                                    loading="lazy">
                             </div>
                             <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
                         </div>
                         <div class="product-info">
-                            <div class="product-vendor">nura Longevity</div>
-                            <h4 class="product-name">Cellular NAD+ Booster</h4>
+                            <div class="product-vendor">nura x AG1</div>
+                            <h4 class="product-name">Ultimate NAD+ Lifespan</h4>
+                            <p class="product-editorial">NMN biodisponibile per rallentare l'invecchiamento cellulare.</p>
+                            <div class="subscription-toggle">
+                                <button class="sub-opt active" data-price="95.00" data-sub-price="80.75">Una Volta</button>
+                                <button class="sub-opt" data-price="95.00" data-sub-price="80.75">Abbonati <span class="sub-save">−15%</span></button>
+                            </div>
                             <div class="product-price">
-                                <span class="current-price">€85.00</span>
+                                <span class="current-price">€95.00</span>
                             </div>
                             <div class="product-rating">
                                 <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
@@ -346,16 +384,23 @@
                     <!-- Product 4 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
+                            <button class="wishlist-btn" aria-label="Aggiungi ai preferiti"><i class="ph ph-heart"></i></button>
                             <div class="product-image">
-                                <img src="images/product-recovery.png" alt="Recovery Aminos" loading="lazy">
+                                <img src="images/product-recovery.png" alt="Nura Signature | Peak Recovery Matrix"
+                                    loading="lazy">
                             </div>
                             <button class="add-to-cart-quick"><i class="ph ph-plus"></i></button>
                         </div>
                         <div class="product-info">
-                            <div class="product-vendor">nura Fitness</div>
-                            <h4 class="product-name">Recovery Aminos</h4>
+                            <div class="product-vendor">nura x Momentous</div>
+                            <h4 class="product-name">Peak Recovery Matrix</h4>
+                            <p class="product-editorial">Creatina HCl + omega-3 per recupero muscolare ottimale.</p>
+                            <div class="subscription-toggle">
+                                <button class="sub-opt active" data-price="52.00" data-sub-price="44.20">Una Volta</button>
+                                <button class="sub-opt" data-price="52.00" data-sub-price="44.20">Abbonati <span class="sub-save">−15%</span></button>
+                            </div>
                             <div class="product-price">
-                                <span class="current-price">€42.00</span>
+                                <span class="current-price">€52.00</span>
                             </div>
                             <div class="product-rating">
                                 <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
@@ -374,11 +419,11 @@
             <div class="container container-narrow">
                 <div class="ethos-content">
                     <div class="ethos-icon"><i class="ph ph-sparkle"></i></div>
-                    <h2 class="ethos-title">Una visione moderna della salute</h2>
-                    <p class="ethos-text">Non crediamo nei "rimedi miracolosi". Crediamo nella <strong>Scienza
-                            Contemporanea</strong>. In nura certifichiamo rigorosamente ogni ingrediente. Selezioniamo
-                        solo i nutrienti, le tecnologie e gli strumenti più performanti a livello globale per elevare la
-                        tua routine di salute a un'esperienza premium senza compromessi.</p>
+                    <h2 class="ethos-title">La Tua Evoluzione, Guidata</h2>
+                    <p class="ethos-text">La nostra missione è semplice: selezionare il meglio per te. Ti guidiamo in
+                        una giungla di prodotti per farti trovare solo le eccellenze assolute che ti permetteranno di
+                        costruire la tua personale routine di amor proprio, supportata dalla <strong>Scienza
+                            Contemporanea</strong>.</p>
                     <div class="ethos-features">
                         <div class="feature-item">
                             <i class="ph ph-check-circle"></i>
@@ -398,46 +443,207 @@
             </div>
         </section>
 
-        <!-- Four Pillars Section (Healf-inspired) -->
-        <section class="pillars-section section-padding">
+        <!-- Process & Selection Stage (Healf Curation Process) -->
+        <section class="curation-section section-padding">
             <div class="container">
                 <div class="section-header"
                     style="justify-content:center; text-align:center; flex-direction:column; align-items:center;">
-                    <span class="hero-badge" style="margin-bottom:1rem;">Il Metodo nura</span>
-                    <h2 class="section-title">I Quattro Pilastri del Benessere</h2>
-                    <p style="color:var(--color-text-light); max-width:560px; margin-top:0.75rem;">Il nostro approccio
-                        si fonda su quattro dimensioni fondamentali. Esplora ciascun pilastro per trovare la tua strada
-                        verso il benessere completo.</p>
+                    <h2 class="section-title">Il Processo Nura™</h2>
+                    <p style="color:var(--color-text-light); max-width:650px; margin-top:0.75rem;">Con il nostro
+                        Processo di Selezione Nura™, facciamo noi il lavoro per te. Acquista con sicurezza sapendo che
+                        ogni prodotto è stato provato, testato e curato per te.</p>
                 </div>
-                <div class="pillars-grid">
-                    <a href="#" class="pillar-card" style="--pillar-color: var(--color-gut);">
-                        <div class="pillar-number">01</div>
-                        <div class="pillar-icon-wrap"><i class="ph ph-leaf"></i></div>
-                        <h3>Nutrizione</h3>
-                        <p>Gut health, probiotici e nutrienti essenziali per il tuo microbioma.</p>
-                        <span class="pillar-cta">Esplora <i class="ph ph-arrow-right"></i></span>
-                    </a>
-                    <a href="#" class="pillar-card" style="--pillar-color: var(--color-energy);">
-                        <div class="pillar-number">02</div>
-                        <div class="pillar-icon-wrap"><i class="ph ph-lightning"></i></div>
-                        <h3>Energia</h3>
-                        <p>Energia cellulare, performance fisica e vitalità quotidiana.</p>
-                        <span class="pillar-cta">Esplora <i class="ph ph-arrow-right"></i></span>
-                    </a>
-                    <a href="#" class="pillar-card" style="--pillar-color: var(--color-brain);">
-                        <div class="pillar-number">03</div>
-                        <div class="pillar-icon-wrap"><i class="ph ph-brain"></i></div>
-                        <h3>Mente</h3>
-                        <p>Focus, chiarezza mentale, nootropici e gestione dello stress.</p>
-                        <span class="pillar-cta">Esplora <i class="ph ph-arrow-right"></i></span>
-                    </a>
-                    <a href="#" class="pillar-card" style="--pillar-color: var(--color-sleep);">
-                        <div class="pillar-number">04</div>
-                        <div class="pillar-icon-wrap"><i class="ph ph-moon-stars"></i></div>
-                        <h3>Sonno</h3>
-                        <p>Riposo profondo, recupero notturno e ritmi circadiani ottimali.</p>
-                        <span class="pillar-cta">Esplora <i class="ph ph-arrow-right"></i></span>
-                    </a>
+                <div class="curation-steps">
+                    <div class="curation-card">
+                        <div class="curation-number">01.</div>
+                        <div class="curation-icon"><i class="ph ph-globe"></i></div>
+                        <h3>La Scoperta</h3>
+                        <p>Con un team globale di buyer e professionisti della salute, oltre ad analisi IA delle
+                            tendenze, abbiamo accesso a un flusso costante di brand innovativi per mantenerti
+                            all'avanguardia del benessere.</p>
+                    </div>
+                    <div class="curation-arrow"><i class="ph ph-arrow-right"></i></div>
+                    <div class="curation-card">
+                        <div class="curation-number">02.</div>
+                        <div class="curation-icon"><i class="ph ph-flask"></i></div>
+                        <h3>Validazione degli Esperti</h3>
+                        <p>Ogni prodotto è testato rigorosamente da un panel di specialisti — inclusi dietisti, personal
+                            trainer, psicologi ed esperti del sonno — per assicurarti solo la massima qualità.</p>
+                    </div>
+                    <div class="curation-arrow"><i class="ph ph-arrow-right"></i></div>
+                    <div class="curation-card">
+                        <div class="curation-number">03.</div>
+                        <div class="curation-icon"><i class="ph ph-heart"></i></div>
+                        <h3>Test della Community</h3>
+                        <p>Il sigillo di approvazione Nura: ogni singolo prodotto deve superare il nostro rigoroso
+                            processo a tre fasi per garantirti solo e unicamente il meglio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expert Picks Section -->
+        <section class="expert-picks-section section-padding">
+            <div class="container">
+                <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;align-items:center;margin-bottom:3rem;">
+                    <span class="section-eyebrow">Selezioni Esclusive</span>
+                    <h2 class="section-title">Curato dai Migliori</h2>
+                    <p style="color:var(--color-text-light);max-width:560px;margin-top:0.75rem;">I nostri esperti selezionano personalmente ogni prodotto. Ecco le loro raccomandazioni più amate.</p>
+                </div>
+                <div class="expert-picks-grid">
+                    <div class="expert-card reveal-up">
+                        <div class="expert-header">
+                            <div class="expert-avatar" style="background: linear-gradient(135deg, var(--color-gut), var(--color-energy))">DR</div>
+                            <div class="expert-info">
+                                <strong>Dr. Roberto Esposito</strong>
+                                <span>Medico Nutrizionista</span>
+                            </div>
+                        </div>
+                        <blockquote class="expert-quote">"Il microbioma è il secondo cervello. Inizia da lì e tutto cambia."</blockquote>
+                        <div class="expert-product-ref">
+                            <img src="images/product-neuro.png" alt="The Gut Protocol" class="expert-product-img">
+                            <div>
+                                <p class="expert-pick-label">La sua scelta</p>
+                                <strong>The Gut Protocol</strong>
+                                <span>€65.00</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm">Aggiungi</button>
+                        </div>
+                    </div>
+                    <div class="expert-card reveal-up" style="transition-delay:100ms">
+                        <div class="expert-header">
+                            <div class="expert-avatar" style="background: linear-gradient(135deg, var(--color-sleep), var(--color-brain))">CS</div>
+                            <div class="expert-info">
+                                <strong>Chiara Santini</strong>
+                                <span>Sleep Coach & Neuroscienziata</span>
+                            </div>
+                        </div>
+                        <blockquote class="expert-quote">"Il sonno non è una variabile—è la fondamenta. Questo protocollo è non negoziabile."</blockquote>
+                        <div class="expert-product-ref">
+                            <img src="images/product-sleep.png" alt="Deep Cellular Rest" class="expert-product-img">
+                            <div>
+                                <p class="expert-pick-label">La sua scelta</p>
+                                <strong>Deep Cellular Rest</strong>
+                                <span>€48.00</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm">Aggiungi</button>
+                        </div>
+                    </div>
+                    <div class="expert-card reveal-up" style="transition-delay:200ms">
+                        <div class="expert-header">
+                            <div class="expert-avatar" style="background: linear-gradient(135deg, var(--color-longevity), var(--color-brain))">LM</div>
+                            <div class="expert-info">
+                                <strong>Luca Marini</strong>
+                                <span>Longevity Researcher</span>
+                            </div>
+                        </div>
+                        <blockquote class="expert-quote">"Il NAD+ declina del 50% a 50 anni. Reintegrarlo è la mossa più intelligente per la longevità."</blockquote>
+                        <div class="expert-product-ref">
+                            <img src="images/product-nad.png" alt="Ultimate NAD+ Lifespan" class="expert-product-img">
+                            <div>
+                                <p class="expert-pick-label">La sua scelta</p>
+                                <strong>Ultimate NAD+ Lifespan</strong>
+                                <span>€95.00</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm">Aggiungi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bundle / Stack Section -->
+        <section class="bundles-section section-padding">
+            <div class="container">
+                <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;align-items:center;margin-bottom:3rem;">
+                    <span class="section-eyebrow">Stacks Pronti</span>
+                    <h2 class="section-title">Il Tuo Stack Perfetto</h2>
+                    <p style="color:var(--color-text-light);max-width:560px;margin-top:0.75rem;">Combinazioni curate dai nostri esperti. Più efficaci insieme, con il massimo risparmio.</p>
+                </div>
+                <div class="bundles-grid">
+                    <div class="bundle-card reveal-up">
+                        <div class="bundle-tag">Popolare</div>
+                        <h3 class="bundle-name">Il Fondamentale</h3>
+                        <p class="bundle-desc">Il punto di partenza per chiunque voglia iniziare con il benessere.</p>
+                        <ul class="bundle-products">
+                            <li><i class="ph ph-check"></i> The Gut Protocol</li>
+                            <li><i class="ph ph-check"></i> Deep Cellular Rest</li>
+                            <li><i class="ph ph-check"></i> Omega-3 Premium</li>
+                        </ul>
+                        <div class="bundle-pricing">
+                            <span class="bundle-original">€160.00</span>
+                            <span class="bundle-price">€132.00</span>
+                            <span class="bundle-savings">Risparmi €28</span>
+                        </div>
+                        <button class="btn btn-primary" style="width:100%">Aggiungi lo Stack</button>
+                    </div>
+                    <div class="bundle-card bundle-card-featured reveal-up" style="transition-delay:100ms">
+                        <div class="bundle-tag bundle-tag-featured">Consigliato</div>
+                        <h3 class="bundle-name">Lo Sportivo</h3>
+                        <p class="bundle-desc">Per chi si allena e vuole recupero, performance e vitalità massima.</p>
+                        <ul class="bundle-products">
+                            <li><i class="ph ph-check"></i> Peak Recovery Matrix</li>
+                            <li><i class="ph ph-check"></i> The Gut Protocol</li>
+                            <li><i class="ph ph-check"></i> Electrolytes LMNT</li>
+                        </ul>
+                        <div class="bundle-pricing">
+                            <span class="bundle-original">€175.00</span>
+                            <span class="bundle-price">€140.00</span>
+                            <span class="bundle-savings">Risparmi €35</span>
+                        </div>
+                        <button class="btn btn-primary" style="width:100%">Aggiungi lo Stack</button>
+                    </div>
+                    <div class="bundle-card reveal-up" style="transition-delay:200ms">
+                        <div class="bundle-tag">Avanzato</div>
+                        <h3 class="bundle-name">La Longevità</h3>
+                        <p class="bundle-desc">Il protocollo completo per chi investe seriamente nella propria salute a lungo termine.</p>
+                        <ul class="bundle-products">
+                            <li><i class="ph ph-check"></i> Ultimate NAD+ Lifespan</li>
+                            <li><i class="ph ph-check"></i> Deep Cellular Rest</li>
+                            <li><i class="ph ph-check"></i> Peak Recovery Matrix</li>
+                        </ul>
+                        <div class="bundle-pricing">
+                            <span class="bundle-original">€240.00</span>
+                            <span class="bundle-price">€190.00</span>
+                            <span class="bundle-savings">Risparmi €50</span>
+                        </div>
+                        <button class="btn btn-primary" style="width:100%">Aggiungi lo Stack</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Press Bar -->
+        <section class="press-section">
+            <div class="container">
+                <p class="press-label">Come raccontato da</p>
+            </div>
+            <div class="press-marquee">
+                <div class="press-track">
+                    <span class="press-item">La Repubblica</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Vogue Italia</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Il Sole 24 Ore</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Wired Italia</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Men's Health</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Forbes Italia</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">La Repubblica</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Vogue Italia</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Il Sole 24 Ore</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Wired Italia</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Men's Health</span>
+                    <span class="press-dot">·</span>
+                    <span class="press-item">Forbes Italia</span>
+                    <span class="press-dot">·</span>
                 </div>
             </div>
         </section>
@@ -461,7 +667,7 @@
                     <span class="brand-dot">•</span>
                     <span class="brand-item">Seed</span>
                     <span class="brand-dot">•</span>
-                    <span class="brand-item">Rhonda Patrick</span>
+                    <span class="brand-item">Kion</span>
                     <span class="brand-dot">•</span>
                     <span class="brand-item">Cymbiotika</span>
                     <span class="brand-dot">•</span>
@@ -477,7 +683,7 @@
                     <span class="brand-dot">•</span>
                     <span class="brand-item">Seed</span>
                     <span class="brand-dot">•</span>
-                    <span class="brand-item">Rhonda Patrick</span>
+                    <span class="brand-item">Kion</span>
                     <span class="brand-dot">•</span>
                     <span class="brand-item">Cymbiotika</span>
                     <span class="brand-dot">•</span>
@@ -485,145 +691,216 @@
             </div>
         </section>
 
-        <!-- Il Processo NURA — Curation Steps (Healf-inspired) -->
-        <section class="curation-section section-padding">
-            <div class="container">
-                <div class="section-header"
-                    style="justify-content:center; text-align:center; flex-direction:column; align-items:center;">
-                    <h2 class="section-title">Il Processo nura</h2>
-                    <p style="color:var(--color-text-light); max-width:560px; margin-top:0.75rem;">Ogni prodotto nel
-                        nostro catalogo passa attraverso un rigoroso processo in tre fasi. Acquista con fiducia.</p>
-                </div>
-                <div class="curation-steps">
-                    <div class="curation-card">
-                        <div class="curation-number">01</div>
-                        <div class="curation-icon"><i class="ph ph-magnifying-glass"></i></div>
-                        <h3>La Scoperta</h3>
-                        <p>Il nostro team globale di esperti identifica i brand e le formule più innovative attraverso
-                            ricerca scientifica e analisi delle tendenze.</p>
-                    </div>
-                    <div class="curation-arrow"><i class="ph ph-arrow-right"></i></div>
-                    <div class="curation-card">
-                        <div class="curation-number">02</div>
-                        <div class="curation-icon"><i class="ph ph-flask"></i></div>
-                        <h3>Validazione Scientifica</h3>
-                        <p>Ogni prodotto viene testato da un panel di specialisti — nutrizionisti, medici sportivi e
-                            biochimici — per garantire la massima qualità.</p>
-                    </div>
-                    <div class="curation-arrow"><i class="ph ph-arrow-right"></i></div>
-                    <div class="curation-card">
-                        <div class="curation-number">03</div>
-                        <div class="curation-icon"><i class="ph ph-users-three"></i></div>
-                        <h3>Test della Community</h3>
-                        <p>Il sigillo di approvazione nura: ogni prodotto viene testato dalla nostra community di
-                            beta-tester per verificarne l'efficacia reale.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Customer Testimonials (Healf-inspired) -->
+        <!-- Testimonials (Healf Aligned) -->
         <section class="testimonials-section section-padding bg-light">
             <div class="container">
                 <div class="section-header"
                     style="justify-content:center; text-align:center; flex-direction:column; align-items:center;">
                     <h2 class="section-title">Cosa Dicono i Nostri Clienti</h2>
-                    <p style="color:var(--color-text-light); max-width:480px; margin-top:0.75rem;">Oltre 100.000 clienti
-                        soddisfatti in tutta Italia.</p>
+                    <p style="color:var(--color-text-light); max-width:480px; margin-top:0.75rem;">Più di 100.000
+                        clienti si affidano a nura.</p>
                 </div>
                 <div class="testimonials-track-wrapper">
                     <div class="testimonials-track" id="testimonialsTrack">
                         <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            <div class="testimonial-stars"><i class="ph-fill ph-star"></i><i
                                     class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
-                                    class="ph-fill ph-star"></i>
-                            </div>
-                            <p class="testimonial-text">"nura ha trasformato la mia routine mattutina. La qualità degli
-                                integratori è impareggiabile e il servizio clienti è sempre impeccabile."</p>
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <h4 style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--color-text-main);">Un approccio
+                                completo al benessere</h4>
+                            <p class="testimonial-text">"nura mi ha impressionato per il suo approccio completo. Il loro
+                                impegno verso ingredienti naturali e le formule più avanzate è evidente. Hanno curato
+                                una gamma vasta per ogni esigenza di salute."</p>
                             <div class="testimonial-author">
-                                <div class="author-avatar">MR</div>
-                                <div><strong>Marco R.</strong><span>Milano</span></div>
+                                <div><strong>Daniele G.</strong></div>
                             </div>
                         </div>
                         <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            <div class="testimonial-stars"><i class="ph-fill ph-star"></i><i
                                     class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
-                                    class="ph-fill ph-star"></i>
-                            </div>
-                            <p class="testimonial-text">"Finalmente un brand italiano che mette la scienza al primo
-                                posto. Il Neuro Protocol ha migliorato notevolmente il mio focus al lavoro."</p>
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <h4 style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--color-text-main);">Prodotti di
+                                altissimo livello</h4>
+                            <p class="testimonial-text">"Se prendi sul serio il tuo benessere, hai bisogno di nura. I
+                                loro prodotti sono di altissimo livello e il team di assistenza clienti è stato super
+                                attento!"</p>
                             <div class="testimonial-author">
-                                <div class="author-avatar">SB</div>
-                                <div><strong>Sofia B.</strong><span>Roma</span></div>
+                                <div><strong>Matteo H.</strong></div>
                             </div>
                         </div>
                         <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            <div class="testimonial-stars"><i class="ph-fill ph-star"></i><i
                                     class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
-                                    class="ph-fill ph-star"></i>
-                            </div>
-                            <p class="testimonial-text">"L'abbonamento è comodissimo e super flessibile. Non devo più
-                                preoccuparmi di restare senza i miei integratori preferiti!"</p>
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <h4 style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--color-text-main);">Uno dei
+                                migliori siti di benessere</h4>
+                            <p class="testimonial-text">"nura è uno dei migliori siti di benessere in cui mi sia
+                                imbattuta. È bello sapere che controllano accuratamente i prodotti che vendono.
+                                Altamente raccomandato."</p>
                             <div class="testimonial-author">
-                                <div class="author-avatar">LV</div>
-                                <div><strong>Luca V.</strong><span>Torino</span></div>
+                                <div><strong>Martina S.</strong></div>
                             </div>
                         </div>
                         <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            <div class="testimonial-stars"><i class="ph-fill ph-star"></i><i
                                     class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
-                                    class="ph ph-star"></i>
-                            </div>
-                            <p class="testimonial-text">"Deep Rest Formula è magica. Dopo anni di insonnia, finalmente
-                                dormo tutta la notte. Consigliatissimo."</p>
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <h4 style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--color-text-main);">Fantastico!
+                            </h4>
+                            <p class="testimonial-text">"nura non è il solito e-commerce di integratori. Loro hanno
+                                davvero capito cosa serve. I prodotti sono incredibili e l'assistenza è sempre genuina."
+                            </p>
                             <div class="testimonial-author">
-                                <div class="author-avatar">AG</div>
-                                <div><strong>Alessia G.</strong><span>Firenze</span></div>
+                                <div><strong>Alessandro P.</strong></div>
                             </div>
                         </div>
                         <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            <div class="testimonial-stars"><i class="ph-fill ph-star"></i><i
                                     class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
-                                    class="ph-fill ph-star"></i>
-                            </div>
-                            <p class="testimonial-text">"Il miglior sito di wellness in Italia, senza dubbio. La cura
-                                nella selezione dei prodotti si vede e si sente."</p>
+                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <h4 style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--color-text-main);">Amo nura
+                            </h4>
+                            <p class="testimonial-text">"È l'unico posto dove trovo brand davvero ottimi, in particolare
+                                quelli americani impossibili da recuperare altrimenti. Non potrei farne a meno."</p>
                             <div class="testimonial-author">
-                                <div class="author-avatar">FD</div>
-                                <div><strong>Francesco D.</strong><span>Napoli</span></div>
+                                <div><strong>Silvia L.</strong></div>
                             </div>
                         </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
-                                    class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
-                                    class="ph-fill ph-star"></i>
+                        <p class="testimonial-text">"Il miglior sito di wellness in Italia, senza dubbio. La cura
+                            nella selezione dei prodotti si vede e si sente."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">FD</div>
+                            <div><strong>Francesco D.</strong><span>Napoli</span></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="testimonial-text">"La funzione La Mia Routine mi permette di tenere sotto
+                            controllo tutti i miei integratori. Un'idea geniale!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">GP</div>
+                            <div><strong>Giulia P.</strong><span>Bologna</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Perché Nura? Comparison Section -->
+        <section class="why-nura-section section-padding">
+            <div class="container">
+                <div class="why-nura-inner">
+                    <div class="why-nura-header">
+                        <span class="section-eyebrow">La Differenza</span>
+                        <h2 class="section-title">Perché scegliere nura?</h2>
+                        <p style="color:var(--color-text-light);max-width:480px;margin-top:0.75rem;">Non siamo un semplice e-commerce. Siamo i tuoi alleati nel benessere.</p>
+                    </div>
+                    <div class="comparison-table reveal-up">
+                        <div class="comparison-header">
+                            <div class="comp-col comp-feature-col"></div>
+                            <div class="comp-col comp-nura">
+                                <span class="comp-brand-logo">nura</span>
                             </div>
-                            <p class="testimonial-text">"La funzione La Mia Routine mi permette di tenere sotto
-                                controllo tutti i miei integratori. Un'idea geniale!"</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">GP</div>
-                                <div><strong>Giulia P.</strong><span>Bologna</span></div>
+                            <div class="comp-col comp-other">
+                                <span>Negozio Generico</span>
                             </div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-feature">Selezione Curata da Esperti</div>
+                            <div class="comp-val comp-yes"><i class="ph ph-check-circle"></i></div>
+                            <div class="comp-val comp-no"><i class="ph ph-x-circle"></i></div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-feature">Test di Laboratorio Certificati</div>
+                            <div class="comp-val comp-yes"><i class="ph ph-check-circle"></i></div>
+                            <div class="comp-val comp-no"><i class="ph ph-x-circle"></i></div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-feature">Trasparenza Ingredienti</div>
+                            <div class="comp-val comp-yes"><i class="ph ph-check-circle"></i></div>
+                            <div class="comp-val comp-no"><i class="ph ph-x-circle"></i></div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-feature">Quiz & Routine Personalizzata</div>
+                            <div class="comp-val comp-yes"><i class="ph ph-check-circle"></i></div>
+                            <div class="comp-val comp-no"><i class="ph ph-x-circle"></i></div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-feature">Resi 365 Giorni</div>
+                            <div class="comp-val comp-yes"><i class="ph ph-check-circle"></i></div>
+                            <div class="comp-val comp-partial"><i class="ph ph-minus-circle"></i></div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="comp-feature">Brand Internazionali Esclusivi</div>
+                            <div class="comp-val comp-yes"><i class="ph ph-check-circle"></i></div>
+                            <div class="comp-val comp-no"><i class="ph ph-x-circle"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Trust Promise Bar (Healf-inspired) -->
+        <!-- Journal / La Fonte Nura -->
+        <section class="journal-section section-padding bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-eyebrow">Conoscenza</span>
+                        <h2 class="section-title">La Fonte Nura</h2>
+                    </div>
+                    <a href="#" class="link-arrow">Tutti gli Articoli <i class="ph ph-arrow-right"></i></a>
+                </div>
+                <div class="journal-grid">
+                    <article class="journal-card reveal-up">
+                        <div class="journal-card-image journal-img-1">
+                            <span class="journal-category-tag">Nutrizione</span>
+                        </div>
+                        <div class="journal-card-body">
+                            <h3>Il Microbioma: perché il tuo intestino è il vero CEO del tuo corpo</h3>
+                            <p>Scopri come i miliardi di batteri nel tuo intestino influenzano umore, immunità e metabolismo.</p>
+                            <a href="#" class="journal-read-more">Leggi l'articolo <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="journal-card reveal-up" style="transition-delay:100ms">
+                        <div class="journal-card-image journal-img-2">
+                            <span class="journal-category-tag">Mente</span>
+                        </div>
+                        <div class="journal-card-body">
+                            <h3>NAD+: la molecola dell'energia che rallenta l'orologio biologico</h3>
+                            <p>La scienza spiega perché i livelli di NAD+ diminuiscono con l'età e come reintegrarli.</p>
+                            <a href="#" class="journal-read-more">Leggi l'articolo <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="journal-card reveal-up" style="transition-delay:200ms">
+                        <div class="journal-card-image journal-img-3">
+                            <span class="journal-category-tag">Scienza</span>
+                        </div>
+                        <div class="journal-card-body">
+                            <h3>Sonno e longevità: dormire bene è l'integratore più potente che esiste</h3>
+                            <p>Le ultime ricerche sul sonno riparatore e il protocollo notturno degli esperti di nura.</p>
+                            <a href="#" class="journal-read-more">Leggi l'articolo <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Healf Promise Aligned -->
         <section class="trust-section">
             <div class="container">
+                <div class="section-header" style="justify-content:center; text-align:center; padding-bottom: 2rem;">
+                    <h2 class="section-title">La Promessa Nura</h2>
+                </div>
                 <div class="trust-grid">
                     <div class="trust-promise">
                         <i class="ph ph-package"></i>
                         <div>
-                            <strong>Reso Gratuito 30 Giorni</strong>
+                            <strong>Resi Gratuiti 365 Giorni</strong>
                             <span>Soddisfatto o rimborsato</span>
                         </div>
                     </div>
@@ -637,8 +914,8 @@
                     <div class="trust-promise">
                         <i class="ph ph-timer"></i>
                         <div>
-                            <strong>Consegna 24/48h</strong>
-                            <span>Spedizione express disponibile</span>
+                            <strong>Consegna Rapida Garantita</strong>
+                            <span>Ricevi i tuoi prodotti 24/48h</span>
                         </div>
                     </div>
                     <div class="trust-promise">
@@ -658,7 +935,8 @@
                 <div class="newsletter-grid">
                     <div class="newsletter-text">
                         <h2>Unisciti al nura Club</h2>
-                        <p>Iscriviti per ricevere insight scientifici sulla longevità, accesso anticipato ai lanci
+                        <p>Iscriviti per ricevere insight scientifici sulla longevità, accesso anticipato ai
+                            lanci
                             esclusivi e 10% di sconto sul tuo primo ordine.</p>
                     </div>
                     <div class="newsletter-form">
@@ -667,7 +945,8 @@
                                 <input type="email" placeholder="La tua email..." required>
                                 <button type="submit" class="btn btn-primary">Iscriviti</button>
                             </div>
-                            <p class="form-disclaimer">Iscrivendoti, accetti la nostra Privacy Policy. Nessuno spam,
+                            <p class="form-disclaimer">Iscrivendoti, accetti la nostra Privacy Policy.
+                                Nessuno spam,
                                 solo valore puro.</p>
                         </form>
                     </div>
@@ -777,30 +1056,30 @@
         <div class="drawer-body">
             <div class="cart-items" id="cartItems">
                 <div class="cart-item">
-                    <img src="images/product-neuro.png" alt="Neuro Protocol" class="cart-item-img">
+                    <img src="images/product-neuro.png" alt="The Gut Protocol" class="cart-item-img">
                     <div class="cart-item-info">
-                        <h5>Neuro Protocol</h5>
-                        <p class="cart-item-vendor">nura Core</p>
+                        <h5>The Gut Protocol</h5>
+                        <p class="cart-item-vendor">nura x Thorne</p>
                         <div class="cart-item-qty">
                             <button class="qty-btn" data-action="minus">−</button>
                             <span class="qty-value">1</span>
                             <button class="qty-btn" data-action="plus">+</button>
                         </div>
                     </div>
-                    <div class="cart-item-price">€45.00</div>
+                    <div class="cart-item-price">€65.00</div>
                 </div>
                 <div class="cart-item">
-                    <img src="images/product-sleep.png" alt="Deep Rest Formula" class="cart-item-img">
+                    <img src="images/product-sleep.png" alt="Deep Cellular Rest" class="cart-item-img">
                     <div class="cart-item-info">
-                        <h5>Deep Rest Formula</h5>
-                        <p class="cart-item-vendor">nura Sleep</p>
+                        <h5>Deep Cellular Rest</h5>
+                        <p class="cart-item-vendor">nura x Huberman</p>
                         <div class="cart-item-qty">
                             <button class="qty-btn" data-action="minus">−</button>
                             <span class="qty-value">1</span>
                             <button class="qty-btn" data-action="plus">+</button>
                         </div>
                     </div>
-                    <div class="cart-item-price">€38.00</div>
+                    <div class="cart-item-price">€48.00</div>
                 </div>
             </div>
             <div class="cart-upsell">
@@ -823,6 +1102,78 @@
 
     <script src="drawers.js"></script>
     <script src="chat.js"></script>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Torna in cima">
+        <i class="ph ph-arrow-up"></i>
+    </button>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-header">
+            <span class="brand-logo">nura</span>
+            <button class="mobile-nav-close" id="mobileNavClose"><i class="ph ph-x"></i></button>
+        </div>
+        <nav class="mobile-nav-body">
+            <div class="mobile-nav-section">
+                <p class="mobile-nav-label">Shop per Categoria</p>
+                <a href="#pillars" class="mobile-nav-link" data-close-mobile>
+                    <i class="ph ph-leaf" style="color:var(--color-gut)"></i> Nutrizione (EAT)
+                </a>
+                <a href="#pillars" class="mobile-nav-link" data-close-mobile>
+                    <i class="ph ph-activity" style="color:var(--color-fitness)"></i> Movimento (MOVE)
+                </a>
+                <a href="#pillars" class="mobile-nav-link" data-close-mobile>
+                    <i class="ph ph-brain" style="color:var(--color-brain)"></i> Mente (MIND)
+                </a>
+                <a href="#pillars" class="mobile-nav-link" data-close-mobile>
+                    <i class="ph ph-moon-stars" style="color:var(--color-sleep)"></i> Sonno (SLEEP)
+                </a>
+            </div>
+            <div class="mobile-nav-section">
+                <p class="mobile-nav-label">Scopri</p>
+                <a href="#featured" class="mobile-nav-link" data-close-mobile>Bestseller</a>
+                <a href="#ethos" class="mobile-nav-link" data-close-mobile>Scienza & Ethos</a>
+                <a href="#" class="mobile-nav-link" data-close-mobile>Il Club</a>
+                <a href="routine.html" class="mobile-nav-link">
+                    <i class="ph ph-calendar-check" style="display:inline;margin-right:6px"></i>La Mia Routine
+                </a>
+                <a href="quiz.html" class="mobile-nav-link">
+                    <i class="ph ph-sparkle" style="display:inline;margin-right:6px"></i>Quiz Wellness
+                </a>
+            </div>
+        </nav>
+        <div class="mobile-nav-footer">
+            <a href="#" class="btn btn-primary" style="width:100%">Scopri Tutti i Prodotti</a>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-inner">
+            <div class="search-bar-wrapper">
+                <i class="ph ph-magnifying-glass search-icon-inline"></i>
+                <input type="search" class="search-input" id="searchInput" placeholder="Cerca prodotti, brand, obiettivi..." autocomplete="off">
+                <button class="search-close-btn" id="searchClose"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="search-popular">
+                <p class="search-popular-label">Ricerche Popolari</p>
+                <div class="search-chips">
+                    <a href="#" class="search-chip">Gut Health</a>
+                    <a href="#" class="search-chip">Sonno</a>
+                    <a href="#" class="search-chip">Energia</a>
+                    <a href="#" class="search-chip">Longevità</a>
+                    <a href="#" class="search-chip">Proteine</a>
+                    <a href="#" class="search-chip">Focus</a>
+                    <a href="#" class="search-chip">Magnesio</a>
+                    <a href="#" class="search-chip">NAD+</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
