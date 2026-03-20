@@ -8,11 +8,11 @@
     <meta name="description"
         content="I migliori supplementi e prodotti wellness per longevità, sonno, energia e focus — in un unico posto. Un solo ordine, una sola spedizione.">
 
-    <!-- Fonts: DM Sans for clean body text, Sora for premium geometric headings (healf.com inspired) -->
+    <!-- Fonts: DM Sans body + Sora display headings + Playfair Display for editorial serif moments -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Sora:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap"
         rel="stylesheet">
 
     <!-- Phosphor Icons -->
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <!-- Header — Minimal Pre-Launch -->
+    <!-- Header — Dark Editorial Pre-Launch -->
     <header class="main-header main-header-minimal" id="mainHeader">
         <div class="header-container container">
             <a href="#" class="brand-logo">nura.</a>
@@ -69,19 +69,38 @@
                 <a href="#prodotti" class="header-minimal-link">Prodotti</a>
                 <a href="#lista-privata" class="header-minimal-link">Il Club</a>
             </nav>
-            <a href="#lista-privata" class="btn btn-primary btn-header-cta">Accedi in Anteprima</a>
+            <div class="header-actions">
+                <a href="#lista-privata" class="btn btn-primary btn-header-cta">Accedi in Anteprima</a>
+                <button class="mobile-menu-btn" aria-label="Apri menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Section — Dark Editorial -->
         <section class="hero-section">
-            <!-- Vibrant Animated Background -->
+            <!-- Dark ambient animated background -->
             <div class="hero-background-vibrant">
                 <div class="blob blob-1"></div>
                 <div class="blob blob-2"></div>
                 <div class="blob blob-3"></div>
                 <div class="hero-noise"></div>
+            </div>
+
+            <!-- Floating credential badges — Karpicky inspired -->
+            <div class="hero-float-badge float-badge-1" aria-hidden="true">
+                <i class="ph-fill ph-flask"></i> Lab Tested
+            </div>
+            <div class="hero-float-badge float-badge-2" aria-hidden="true">
+                <i class="ph-fill ph-globe-hemisphere-west"></i> 500+ Brand Premium
+            </div>
+            <div class="hero-float-badge float-badge-3" aria-hidden="true">
+                <i class="ph-fill ph-package"></i> 1 Ordine · 1 Spedizione
+            </div>
+            <div class="hero-float-badge float-badge-4" aria-hidden="true">
+                <i class="ph-fill ph-seal-check"></i> Science-Backed
             </div>
 
             <div class="hero-content hero-content-centered container reveal-up">
@@ -90,21 +109,24 @@
                     <span id="waitlistCounter">247</span> persone in lista privata
                 </div>
                 <h1 class="hero-title hero-title-large reveal-item" style="transition-delay: 100ms;">Longevity,<br><em>semplificata.</em></h1>
-                <p class="hero-description hero-description-centered reveal-item" style="transition-delay: 200ms;">
-                    I migliori supplementi e prodotti wellness per sonno, energia, focus e healthy aging —
-                    in un unico posto. <strong>Un solo ordine, una sola spedizione.</strong>
-                </p>
 
-                <!-- Hero Email Capture — CTA #1 -->
-                <form class="hero-email-form reveal-item" id="heroEmailForm" style="transition-delay: 300ms;" onsubmit="handleHeroEmail(event)">
-                    <div class="hero-email-group">
-                        <input type="email" placeholder="La tua email..." required class="hero-email-input" id="heroEmail">
-                        <button type="submit" class="btn btn-primary btn-glow">
-                            Accedi in Anteprima <i class="ph ph-arrow-right"></i>
-                        </button>
-                    </div>
-                    <p class="hero-email-note"><i class="ph ph-lock-simple" style="display:inline;margin-right:4px"></i>Nessuno spam. Solo accesso anticipato + protocolli esclusivi.</p>
-                </form>
+                <!-- Split row: description left, form right -->
+                <div class="hero-split reveal-item" style="transition-delay: 200ms;">
+                    <p class="hero-description hero-description-centered">
+                        I migliori supplementi e prodotti wellness per sonno, energia, focus e healthy aging —
+                        in un unico posto. <strong>Un solo ordine, una sola spedizione.</strong>
+                    </p>
+                    <!-- Hero Email Capture — CTA #1 -->
+                    <form class="hero-email-form" id="heroEmailForm" onsubmit="handleHeroEmail(event)">
+                        <div class="hero-email-group">
+                            <input type="email" placeholder="La tua email..." required class="hero-email-input" id="heroEmail">
+                            <button type="submit" class="btn btn-primary btn-glow">
+                                Accedi in Anteprima <i class="ph ph-arrow-right"></i>
+                            </button>
+                        </div>
+                        <p class="hero-email-note"><i class="ph ph-lock-simple" style="display:inline;margin-right:4px"></i>Nessuno spam. Solo accesso anticipato + protocolli esclusivi.</p>
+                    </form>
+                </div>
 
                 <div class="hero-trust-badges reveal-item" style="transition-delay: 400ms;">
                     <div class="trust-item"><i class="ph-fill ph-shield-check"></i> Brand Certificati</div>
