@@ -1,141 +1,93 @@
 /**
- * NURA — Wellness Quiz
- * Multi-step quiz with personalized recommendations
+ * NURA — Protocollo Longevity Quiz
+ * 4 domande per costruire il profilo longevity personale
+ * Flusso: email capture → quiz → risultati + CTA
  */
 document.addEventListener('DOMContentLoaded', () => {
-    // ─── Quiz Data ──────────────────────────────────────────
+
+    // ─── PDF-Exact Questions ────────────────────────────────
     const QUESTIONS = [
         {
             id: 'goal',
-            title: 'Qual è il tuo obiettivo principale di benessere?',
+            title: 'Qual è il tuo obiettivo principale?',
             desc: 'Scegli quello che ti sta più a cuore in questo momento.',
-            multi: false,
-            grid: true,
             options: [
-                { value: 'energy', icon: 'ph-lightning', label: 'Più Energia', sub: 'Vitalità e performance' },
-                { value: 'sleep', icon: 'ph-moon-stars', label: 'Dormire Meglio', sub: 'Qualità del sonno' },
-                { value: 'gut', icon: 'ph-leaf', label: 'Salute Intestinale', sub: 'Digestione e microbioma' },
-                { value: 'focus', icon: 'ph-brain', label: 'Focus Mentale', sub: 'Concentrazione e memoria' },
-                { value: 'longevity', icon: 'ph-heart', label: 'Longevità', sub: 'Invecchiamento sano' },
-                { value: 'fitness', icon: 'ph-barbell', label: 'Recupero Fitness', sub: 'Performance atletica' }
+                { value: 'sleep',    icon: 'ph-moon-stars',      label: 'Dormire meglio',    sub: 'Sonno profondo e ristoratore' },
+                { value: 'energy',   icon: 'ph-lightning',       label: 'Più energia',       sub: 'Vitalità e performance tutto il giorno' },
+                { value: 'focus',    icon: 'ph-brain',           label: 'Migliorare il focus', sub: 'Concentrazione e chiarezza mentale' },
+                { value: 'general',  icon: 'ph-heart',           label: 'Salute generale',   sub: 'Benessere e longevità a lungo termine' }
             ]
         },
         {
-            id: 'lifestyle',
-            title: 'Come descriveresti il tuo stile di vita?',
-            desc: 'Questo ci aiuta a calibrare le raccomandazioni.',
-            multi: false,
-            grid: false,
+            id: 'products_used',
+            title: 'Quanti prodotti wellness usi oggi?',
+            desc: 'Integratori, supplementi, vitamine — quanti ne prendi già?',
             options: [
-                { value: 'sedentary', icon: 'ph-desktop', label: 'Sedentario', sub: 'Lavoro d\'ufficio, poco movimento' },
-                { value: 'moderate', icon: 'ph-person-simple-walk', label: 'Moderatamente Attivo', sub: 'Camminate, sport 2-3x/settimana' },
-                { value: 'active', icon: 'ph-person-simple-run', label: 'Molto Attivo', sub: 'Sport intenso 4-5x/settimana' },
-                { value: 'athlete', icon: 'ph-trophy', label: 'Atleta', sub: 'Allenamento quotidiano intenso' }
+                { value: 'none',    icon: 'ph-circle',          label: 'Nessuno',   sub: 'Parto da zero' },
+                { value: '1_2',     icon: 'ph-number-circle-one', label: '1–2',     sub: 'Qualcosa di base già c\'è' },
+                { value: '3_5',     icon: 'ph-number-circle-three', label: '3–5',   sub: 'Ho già una routine' },
+                { value: '5_plus',  icon: 'ph-stack',           label: '5+',        sub: 'Sono già abbastanza avanzato' }
             ]
         },
         {
-            id: 'diet',
-            title: 'Qual è la tua alimentazione?',
-            desc: 'Alcuni integratori sono più indicati in base alla dieta.',
-            multi: false,
-            grid: true,
+            id: 'sites_buying',
+            title: 'Da quanti siti compri i tuoi prodotti?',
+            desc: 'Vogliamo capire quanto è frammentato il tuo shopping wellness.',
             options: [
-                { value: 'omnivore', icon: 'ph-fork-knife', label: 'Onnivora', sub: 'Mangio tutto' },
-                { value: 'vegetarian', icon: 'ph-plant', label: 'Vegetariana', sub: 'Niente carne' },
-                { value: 'vegan', icon: 'ph-leaf', label: 'Vegana', sub: 'Niente prodotti animali' },
-                { value: 'keto', icon: 'ph-egg', label: 'Keto/Low-Carb', sub: 'Alto contenuto di grassi' }
+                { value: '1',       icon: 'ph-storefront',      label: '1 sito',    sub: 'Compro da un posto solo' },
+                { value: '2',       icon: 'ph-browsers',        label: '2 siti',    sub: 'Divido tra un paio di shop' },
+                { value: '3_plus',  icon: 'ph-globe',           label: '3 o più',   sub: 'Shopping disperso ovunque' }
             ]
         },
         {
-            id: 'sleep_quality',
-            title: 'Come valuti la qualità del tuo sonno?',
-            desc: 'Il sonno è fondamentale per ogni aspetto del benessere.',
-            multi: false,
-            grid: false,
+            id: 'monthly_spend',
+            title: 'Quanto spendi al mese in prodotti wellness?',
+            desc: 'Questo ci aiuta a costruire il tuo protocollo in modo realistico.',
             options: [
-                { value: 'great', icon: 'ph-smiley', label: 'Eccellente', sub: 'Dormo 7-9h senza problemi' },
-                { value: 'okay', icon: 'ph-smiley-meh', label: 'Nella media', sub: 'Qualche volta mi sveglio stanco' },
-                { value: 'poor', icon: 'ph-smiley-sad', label: 'Scarsa', sub: 'Fatico ad addormentarmi o mi sveglio spesso' },
-                { value: 'terrible', icon: 'ph-smiley-x-eyes', label: 'Pessima', sub: 'Insonnia cronica' }
-            ]
-        },
-        {
-            id: 'stress',
-            title: 'Quanto stress sperimenti nella vita quotidiana?',
-            desc: 'Lo stress influenza molte funzioni corporee.',
-            multi: false,
-            grid: true,
-            options: [
-                { value: 'low', icon: 'ph-sun', label: 'Basso', sub: 'Vita tranquilla' },
-                { value: 'moderate', icon: 'ph-cloud-sun', label: 'Moderato', sub: 'Gestibile' },
-                { value: 'high', icon: 'ph-cloud-rain', label: 'Alto', sub: 'Spesso sotto pressione' },
-                { value: 'extreme', icon: 'ph-cloud-lightning', label: 'Molto Alto', sub: 'Costantemente stressato' }
+                { value: 'under_50',    icon: 'ph-currency-eur',    label: 'Meno di €50',       sub: 'Budget iniziale' },
+                { value: '50_100',      icon: 'ph-currency-eur',    label: '€50 – €100',        sub: 'Investimento moderato' },
+                { value: '100_200',     icon: 'ph-currency-eur',    label: '€100 – €200',       sub: 'Priorità alla salute' },
+                { value: '200_plus',    icon: 'ph-currency-eur',    label: '€200+',             sub: 'Massima performance' }
             ]
         }
     ];
 
-    const RECOMMENDATIONS = {
-        energy: {
-            title: 'Protocollo Energia',
-            icon: 'ph-lightning',
-            color: 'var(--color-energy)',
-            desc: 'CoQ10, Vitamina B12, Ferro e Magnesio per sostenere la produzione di energia cellulare e combattere la stanchezza.',
-            tag: 'Energia', tagColor: '#f59e0b'
-        },
+    // ─── Result Protocols ───────────────────────────────────
+    const PROTOCOLS = {
         sleep: {
-            title: 'Deep Rest Formula',
+            title: 'Sleep Optimization Protocol',
             icon: 'ph-moon-stars',
-            color: 'var(--color-sleep)',
-            desc: 'Melatonina, Magnesio Glicinato, L-Teanina e Ashwagandha per un sonno profondo e ristoratore.',
-            tag: 'Sonno', tagColor: '#6366f1'
+            color: '#4A63E0',
+            products: ['Magnesio Glicinate 400', 'Blue Light Blocking Glasses', 'Deep Cellular Rest'],
+            desc: 'Il tuo focus principale è il sonno. Con questo protocollo vedrai miglioramenti nella qualità del sonno in 2–3 settimane.'
         },
-        gut: {
-            title: 'Gut Repair Complex',
-            icon: 'ph-leaf',
-            color: 'var(--color-gut)',
-            desc: 'Probiotici multi-ceppo, L-Glutammina, zinco e fibre prebiotiche per ripristinare l\'equilibrio del microbioma.',
-            tag: 'Gut Health', tagColor: '#10b981'
+        energy: {
+            title: 'Energy & Vitality Protocol',
+            icon: 'ph-lightning',
+            color: '#FA6B33',
+            products: ['Mushroom Coffee Lion\'s Mane', 'Elettroliti LMNT Zero Sugar', 'Vitamina B Complex'],
+            desc: 'Energia pulita e sostenuta durante tutta la giornata, senza picchi e crolli di caffeina.'
         },
         focus: {
-            title: 'Neuro Protocol',
+            title: 'Cognitive Performance Protocol',
             icon: 'ph-brain',
-            color: 'var(--color-brain)',
-            desc: 'Lion\'s Mane, Omega-3 DHA, Bacopa Monnieri e Fosfatidilserina per supportare concentrazione e memoria.',
-            tag: 'Focus', tagColor: '#8b5cf6'
+            color: '#35B5E5',
+            products: ['Mushroom Coffee Lion\'s Mane', 'Omega-3 DHA Premium', 'Magnesio L-Treonato'],
+            desc: 'Focus profondo, riduzione del brain fog e performance cognitiva ottimale tutto il giorno.'
         },
-        longevity: {
-            title: 'Longevity Stack',
+        general: {
+            title: 'Longevity Foundation Protocol',
             icon: 'ph-heart',
-            color: 'var(--color-longevity)',
-            desc: 'NMN, Resveratrolo, Vitamina D3+K2 e Astaxantina per proteggere le cellule dall\'invecchiamento.',
-            tag: 'Longevità', tagColor: '#059669'
-        },
-        fitness: {
-            title: 'Recovery Pro',
-            icon: 'ph-barbell',
-            color: 'var(--color-fitness)',
-            desc: 'Creatina, Proteine del siero, BCAA e Curcumina per accelerare il recupero e ridurre l\'infiammazione.',
-            tag: 'Fitness', tagColor: '#ef4444'
-        },
-        stress: {
-            title: 'Calm & Adapt',
-            icon: 'ph-flower-lotus',
-            color: '#a78bfa',
-            desc: 'Ashwagandha KSM-66, Rhodiola Rosea, Magnesio e complesso vitaminico B per gestire lo stress.',
-            tag: 'Anti-Stress', tagColor: '#a78bfa'
-        },
-        vitamin: {
-            title: 'Daily Essential',
-            icon: 'ph-pill',
-            color: 'var(--color-energy)',
-            desc: 'Multi-vitaminico completo con Vitamina D3, K2, Zinco e Selenio per colmare le carenze di base.',
-            tag: 'Base', tagColor: '#6b7280'
+            color: '#245A46',
+            products: ['Collagene Marino Idrolizzato', 'Magnesio Glicinate 400', 'Vitamina D3+K2'],
+            desc: 'Le fondamenta del benessere a lungo termine. Il punto di partenza per chiunque voglia investire nella propria salute.'
         }
     };
 
     // ─── State ──────────────────────────────────────────────
     let currentStep = 0;
     const answers = {};
+    let userEmail = '';
 
     // ─── DOM ────────────────────────────────────────────────
     const introSection = document.getElementById('quizIntro');
@@ -149,19 +101,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('startQuizBtn');
     const retakeBtn = document.getElementById('retakeQuiz');
 
-    // ─── Start Quiz ─────────────────────────────────────────
-    startBtn.addEventListener('click', () => {
-        introSection.style.display = 'none';
-        quizContainer.style.display = 'flex';
-        renderQuestion();
-    });
+    // ─── Check for email param ───────────────────────────────
+    // If user came from homepage email form, pre-populate and auto-start
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('email')) {
+        userEmail = decodeURIComponent(params.get('email'));
+        if (params.get('autostart') === '1') {
+            setTimeout(() => {
+                introSection.style.display = 'none';
+                quizContainer.style.display = 'flex';
+                renderQuestion();
+            }, 400);
+        }
+    }
 
-    retakeBtn.addEventListener('click', () => {
-        currentStep = 0;
-        Object.keys(answers).forEach(k => delete answers[k]);
-        resultsSection.style.display = 'none';
-        introSection.style.display = 'flex';
-    });
+    // ─── Start Quiz ─────────────────────────────────────────
+    if (startBtn) {
+        startBtn.addEventListener('click', () => {
+            introSection.style.display = 'none';
+            quizContainer.style.display = 'flex';
+            renderQuestion();
+        });
+    }
+
+    if (retakeBtn) {
+        retakeBtn.addEventListener('click', () => {
+            currentStep = 0;
+            Object.keys(answers).forEach(k => delete answers[k]);
+            resultsSection.style.display = 'none';
+            introSection.style.display = 'flex';
+        });
+    }
 
     // ─── Render Question ────────────────────────────────────
     function renderQuestion() {
@@ -172,11 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
         stepLabel.textContent = `Domanda ${currentStep + 1} di ${QUESTIONS.length}`;
         prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
 
-        if (currentStep === QUESTIONS.length - 1) {
-            nextBtn.innerHTML = 'Vedi Risultati <i class="ph ph-sparkle" style="display:inline"></i>';
-        } else {
-            nextBtn.innerHTML = 'Avanti <i class="ph ph-arrow-right" style="display:inline"></i>';
-        }
+        const isLast = currentStep === QUESTIONS.length - 1;
+        nextBtn.innerHTML = isLast
+            ? 'Vedi il mio Protocollo <i class="ph ph-sparkle" style="display:inline"></i>'
+            : 'Avanti <i class="ph ph-arrow-right" style="display:inline"></i>';
 
         const selected = answers[q.id] || null;
         nextBtn.disabled = !selected;
@@ -184,104 +153,162 @@ document.addEventListener('DOMContentLoaded', () => {
         questionArea.innerHTML = `
             <h2>${q.title}</h2>
             <p class="quiz-desc">${q.desc}</p>
-            <div class="quiz-options ${q.grid ? 'grid-2' : ''}">
+            <div class="quiz-options">
                 ${q.options.map(opt => `
                     <div class="quiz-option ${selected === opt.value ? 'selected' : ''}" data-value="${opt.value}">
                         <div class="quiz-option-icon"><i class="ph ${opt.icon}"></i></div>
                         <div class="quiz-option-text">
-                            ${opt.label}
+                            <strong>${opt.label}</strong>
                             ${opt.sub ? `<small>${opt.sub}</small>` : ''}
                         </div>
+                        ${selected === opt.value ? '<div class="quiz-option-check"><i class="ph ph-check"></i></div>' : ''}
                     </div>
                 `).join('')}
             </div>
         `;
 
-        // Attach click handlers
         questionArea.querySelectorAll('.quiz-option').forEach(opt => {
             opt.addEventListener('click', () => {
                 answers[q.id] = opt.dataset.value;
-                questionArea.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+                questionArea.querySelectorAll('.quiz-option').forEach(o => {
+                    o.classList.remove('selected');
+                    o.querySelector('.quiz-option-check')?.remove();
+                });
                 opt.classList.add('selected');
+                const check = document.createElement('div');
+                check.className = 'quiz-option-check';
+                check.innerHTML = '<i class="ph ph-check"></i>';
+                opt.appendChild(check);
                 nextBtn.disabled = false;
+                // Auto-advance after short delay
+                setTimeout(() => { if (nextBtn && !nextBtn.disabled) nextBtn.click(); }, 500);
             });
         });
     }
 
     // ─── Navigation ─────────────────────────────────────────
-    nextBtn.addEventListener('click', () => {
-        if (currentStep < QUESTIONS.length - 1) {
-            currentStep++;
-            renderQuestion();
-        } else {
-            showResults();
-        }
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < QUESTIONS.length - 1) {
+                currentStep++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        });
+    }
 
-    prevBtn.addEventListener('click', () => {
-        if (currentStep > 0) {
-            currentStep--;
-            renderQuestion();
-        }
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                renderQuestion();
+            }
+        });
+    }
 
     // ─── Show Results ───────────────────────────────────────
     function showResults() {
         quizContainer.style.display = 'none';
         resultsSection.style.display = 'block';
 
-        const recs = getRecommendations();
-        const grid = document.getElementById('resultsGrid');
+        const goal = answers.goal || 'general';
+        const protocol = PROTOCOLS[goal];
+        const spend = answers.monthly_spend;
+        const sites = answers.sites_buying;
 
-        grid.innerHTML = recs.map(rec => `
-            <div class="result-card">
-                <div class="result-card-icon" style="background: ${rec.color};">
-                    <i class="ph ${rec.icon}"></i>
+        // Personalized insight
+        let insight = '';
+        if (sites === '3_plus') {
+            insight = `Compri da 3+ siti diversi. Con nura. potresti ricevere tutto in un unico ordine, risparmiando tempo e spedizioni.`;
+        } else if (sites === '2') {
+            insight = `Compri da 2 siti diversi. nura. unifica tutto in un posto.`;
+        } else {
+            insight = `Sei già organizzato. nura. ti porta solo i migliori prodotti internazionali non disponibili in Italia.`;
+        }
+
+        const grid = document.getElementById('resultsGrid');
+        if (grid) {
+            grid.innerHTML = `
+                <div class="result-protocol-card">
+                    <div class="result-protocol-header" style="background: ${protocol.color}">
+                        <i class="ph ${protocol.icon}"></i>
+                        <h2>${protocol.title}</h2>
+                    </div>
+                    <div class="result-protocol-body">
+                        <p class="result-insight-text">${protocol.desc}</p>
+                        <div class="result-products-list">
+                            <p class="result-products-label">Il tuo stack raccomandato:</p>
+                            ${protocol.products.map(p => `
+                                <div class="result-product-item">
+                                    <i class="ph ph-check-circle" style="color:${protocol.color}"></i>
+                                    <span>${p}</span>
+                                    <span class="result-coming-badge">In arrivo</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="result-insight-box">
+                            <i class="ph ph-lightbulb"></i>
+                            <p>${insight}</p>
+                        </div>
+                        <div class="result-final-cta">
+                            <p>Vuoi ricevere questo protocollo quando apriamo?</p>
+                            <form class="result-email-form" id="resultEmailForm" onsubmit="handleResultEmail(event)">
+                                <input type="email" id="resultEmail" placeholder="La tua email..."
+                                    value="${userEmail}" required class="lista-email-input">
+                                <button type="submit" class="btn btn-primary btn-glow" style="width:100%;margin-top:0.75rem">
+                                    <i class="ph ph-rocket-launch" style="display:inline;margin-right:6px"></i>
+                                    Unisciti alla Lista Privata
+                                </button>
+                            </form>
+                            <p class="lista-note" style="margin-top:0.75rem">
+                                <i class="ph ph-lock-simple" style="display:inline;margin-right:4px"></i>Nessuno spam. Solo accesso anticipato.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <h3>${rec.title}</h3>
-                <p>${rec.desc}</p>
-                <span class="result-tag" style="background: ${rec.tagColor}15; color: ${rec.tagColor};">${rec.tag}</span>
-            </div>
-        `).join('');
+            `;
+        }
     }
 
-    function getRecommendations() {
-        const recs = [];
+    // ─── Global email handlers ───────────────────────────────
+    window.handleResultEmail = function(e) {
+        e.preventDefault();
+        const email = document.getElementById('resultEmail')?.value;
+        submitToWaitlist(email, answers.goal);
+    };
 
-        // Primary recommendation based on goal
-        const goal = answers.goal || 'energy';
-        if (RECOMMENDATIONS[goal]) recs.push(RECOMMENDATIONS[goal]);
-
-        // Sleep recommendation if sleep is poor
-        const sleepQ = answers.sleep_quality;
-        if ((sleepQ === 'poor' || sleepQ === 'terrible') && goal !== 'sleep') {
-            recs.push(RECOMMENDATIONS.sleep);
+    function submitToWaitlist(email, goal) {
+        // Store in localStorage as proof of concept
+        const list = JSON.parse(localStorage.getItem('nura_waitlist') || '[]');
+        if (!list.find(e => e.email === email)) {
+            list.push({ email, goal, ts: Date.now() });
+            localStorage.setItem('nura_waitlist', JSON.stringify(list));
         }
-
-        // Stress recommendation if stress is high
-        const stress = answers.stress;
-        if ((stress === 'high' || stress === 'extreme')) {
-            recs.push(RECOMMENDATIONS.stress);
+        // Show thank-you state
+        const form = document.getElementById('resultEmailForm') || document.getElementById('listaPrivataForm') || document.getElementById('heroEmailForm');
+        if (form) {
+            form.innerHTML = `
+                <div class="waitlist-success">
+                    <i class="ph ph-check-circle"></i>
+                    <h3>Sei nella lista!</h3>
+                    <p>Ti avviseremo per primi quando apriamo. Controlla la tua email.</p>
+                </div>
+            `;
         }
-
-        // Vitamin base for sedentary or vegan
-        if (answers.lifestyle === 'sedentary' || answers.diet === 'vegan') {
-            recs.push(RECOMMENDATIONS.vitamin);
-        }
-
-        // Gut health for everyone with poor sleep + stress
-        if (sleepQ === 'terrible' && stress === 'extreme' && goal !== 'gut') {
-            recs.push(RECOMMENDATIONS.gut);
-        }
-
-        // Ensure at least 2 recommendations and max 4
-        if (recs.length < 2) recs.push(RECOMMENDATIONS.vitamin);
-        return recs.slice(0, 4);
+        // Update counter
+        const counters = document.querySelectorAll('#waitlistCounter, #listaCounterNum');
+        counters.forEach(c => {
+            const current = parseInt(c.textContent) || 247;
+            c.textContent = current + 1;
+        });
     }
 
     // ─── Header scroll ──────────────────────────────────────
     const header = document.getElementById('mainHeader');
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    }
 });

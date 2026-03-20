@@ -55,17 +55,16 @@
                 <div class="hero-noise"></div>
             </div>
             <div class="quiz-intro-content">
-                <span class="hero-badge">Personalizzato per te</span>
-                <h1>Scopri il Tuo Percorso Wellness</h1>
-                <p>Rispondi a poche domande e ricevi raccomandazioni scientifiche su misura per i tuoi obiettivi di
-                    benessere.</p>
+                <span class="hero-badge">4 domande · 1 minuto</span>
+                <h1>Scopri il tuo protocollo longevity</h1>
+                <p>Aiutaci a personalizzare la tua esperienza. Rispondi a 4 domande e ricevi il protocollo nura. su misura per i tuoi obiettivi.</p>
                 <button class="btn btn-primary btn-lg" id="startQuizBtn">
-                    <i class="ph ph-sparkle" style="display:inline;margin-right:6px"></i> Inizia il Quiz
+                    <i class="ph ph-sparkle" style="display:inline;margin-right:6px"></i> Inizia ora
                 </button>
                 <div class="quiz-stats">
-                    <span><i class="ph ph-timer"></i> 2 minuti</span>
-                    <span><i class="ph ph-users"></i> 50,000+ completati</span>
-                    <span><i class="ph ph-shield-check"></i> Basato sulla scienza</span>
+                    <span><i class="ph ph-timer"></i> Solo 1 minuto</span>
+                    <span><i class="ph ph-users"></i> 247 già completati</span>
+                    <span><i class="ph ph-shield-check"></i> Protocollo personalizzato</span>
                 </div>
             </div>
         </section>
@@ -75,7 +74,7 @@
             <div class="quiz-progress-bar">
                 <div class="quiz-progress-fill" id="quizProgressFill"></div>
             </div>
-            <div class="quiz-step-label" id="stepLabel">Domanda 1 di 5</div>
+            <div class="quiz-step-label" id="stepLabel">Domanda 1 di 4</div>
 
             <!-- All questions rendered by JS -->
             <div class="quiz-question-area" id="questionArea"></div>
@@ -93,17 +92,13 @@
         <!-- Quiz Results -->
         <section class="quiz-results" id="quizResults" style="display:none;">
             <div class="results-header">
-                <span class="hero-badge">I tuoi risultati</span>
-                <h2>Il Tuo Profilo Wellness Personalizzato</h2>
-                <p>In base alle tue risposte, ecco il piano che abbiamo creato per te.</p>
+                <span class="hero-badge">Il tuo protocollo</span>
+                <h2>Ecco la tua selezione nura.</h2>
+                <p>Basato sulle tue risposte, abbiamo costruito il tuo stack personale.</p>
             </div>
             <div class="results-grid" id="resultsGrid"></div>
-            <div class="results-cta">
-                <button class="btn btn-primary btn-lg" onclick="window.location.href='index.html#featured'">
-                    <i class="ph ph-shopping-bag" style="display:inline;margin-right:6px"></i> Esplora i Prodotti
-                    Consigliati
-                </button>
-                <button class="btn btn-outline btn-lg" id="retakeQuiz">
+            <div class="results-cta" style="margin-top:2rem;text-align:center">
+                <button class="btn btn-outline" id="retakeQuiz">
                     <i class="ph ph-arrow-counter-clockwise" style="display:inline;margin-right:6px"></i> Rifai il Quiz
                 </button>
             </div>

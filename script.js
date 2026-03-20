@@ -319,5 +319,87 @@ document.addEventListener('DOMContentLoaded', () => {
             showToast(`Stack "${name}" aggiunto al carrello`, 'success', 'ph-shopping-bag');
         });
     });
+
+    // ─── Hero Email Form → redirect to quiz ─────────────────
+    window.handleHeroEmail = function(e) {
+        e.preventDefault();
+        const email = document.getElementById('heroEmail')?.value;
+        if (!email) return;
+        submitWaitlistAndRedirect(email);
+    };
+
+    window.handleListaEmail = function(e) {
+        e.preventDefault();
+        const email = document.getElementById('listaEmail')?.value;
+        if (!email) return;
+        submitWaitlistAndRedirect(email);
+    };
+
+    function submitWaitlistAndRedirect(email) {
+        // Save to localStorage
+        const list = JSON.parse(localStorage.getItem('nura_waitlist') || '[]');
+        if (!list.find(e => e.email === email)) {
+            list.push({ email, ts: Date.now() });
+            localStorage.setItem('nura_waitlist', JSON.stringify(list));
+        }
+        // Animate counter
+        animateCounter();
+        // Show toast then redirect to quiz
+        showToast('Perfetto! Scopri il tuo protocollo personale.', 'success', 'ph-sparkle');
+        setTimeout(() => {
+            window.location.href = `quiz.html?email=${encodeURIComponent(email)}&autostart=1`;
+        }, 1200);
+    }
+
+    function animateCounter() {
+        const counters = document.querySelectorAll('#waitlistCounter, #listaCounterNum');
+        counters.forEach(c => {
+            const current = parseInt(c.textContent.replace(/\D/g, '')) || 247;
+            const target = current + 1;
+            c.textContent = target;
+        });
+    }
+
+    // ─── Waitlist counter live animation ────────────────────
+    // Simulate occasional signups for social proof
+    const counters = document.querySelectorAll('#waitlistCounter, #listaCounterNum');
+    if (counters.length) {
+        // Restore from localStorage
+        const list = JSON.parse(localStorage.getItem('nura_waitlist') || '[]');
+        const base = 247 + list.length;
+        counters.forEach(c => { c.textContent = base; });
+
+        // Simulate organic growth every 30–90 seconds
+        setInterval(() => {
+            if (Math.random() > 0.4) {
+                counters.forEach(c => {
+                    c.textContent = parseInt(c.textContent) + 1;
+                });
+            }
+        }, Math.random() * 60000 + 30000);
+    }
+
+    // ─── Product notify buttons (pre-launch) ─────────────────
+    document.querySelectorAll('.add-to-cart-quick').forEach(btn => {
+        // Override quick-add to show notify toast for pre-launch products
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const name = btn.closest('.product-card')?.querySelector('.product-name')?.textContent || 'Prodotto';
+            btn.innerHTML = '<i class="ph ph-check" style="color:var(--color-gut)"></i>';
+            setTimeout(() => { btn.innerHTML = '<i class="ph ph-bell"></i>'; }, 2000);
+            showToast(`Sarai notificato quando "${name}" sarà disponibile`, 'success', 'ph-bell');
+        });
+    }, { once: false });
+
+    // ─── Floating CTA bar ───────────────────────────────────
+    const floatingBar = document.getElementById('floatingCtaBar');
+    if (floatingBar) {
+        window.addEventListener('scroll', () => {
+            const heroHeight = document.querySelector('.hero-section')?.offsetHeight || 500;
+            const nearBottom = window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 200;
+            floatingBar.classList.toggle('visible', window.scrollY > heroHeight && !nearBottom);
+        });
+    }
 });
 
