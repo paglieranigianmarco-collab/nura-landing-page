@@ -381,22 +381,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ─── Product notify buttons (pre-launch) ─────────────────
     document.querySelectorAll('.add-to-cart-quick').forEach(btn => {
-        // Override quick-add to show notify toast for pre-launch products
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const name = btn.closest('.product-card')?.querySelector('.product-name')?.textContent || 'Prodotto';
-            btn.innerHTML = '<i class="ph ph-check" style="color:var(--color-gut)"></i>';
-            setTimeout(() => { btn.innerHTML = '<i class="ph ph-bell"></i>'; }, 2000);
+            // Support both old .product-name selector and new data-product attribute
+            const name = btn.dataset.product
+                || btn.closest('.n-product-card')?.querySelector('.n-product-name')?.textContent
+                || btn.closest('.product-card')?.querySelector('.product-name')?.textContent
+                || 'Prodotto';
+            btn.classList.add('notified');
+            btn.innerHTML = '<i class="ph ph-check"></i> Fatto!';
+            setTimeout(() => {
+                btn.classList.remove('notified');
+                btn.innerHTML = '<i class="ph ph-bell"></i> Avvisami';
+            }, 2500);
             showToast(`Sarai notificato quando "${name}" sarà disponibile`, 'success', 'ph-bell');
         });
-    }, { once: false });
+    });
 
     // ─── Floating CTA bar ───────────────────────────────────
     const floatingBar = document.getElementById('floatingCtaBar');
     if (floatingBar) {
         window.addEventListener('scroll', () => {
-            const heroHeight = document.querySelector('.hero-section')?.offsetHeight || 500;
+            const heroHeight = (document.querySelector('.n-hero') || document.querySelector('.hero-section'))?.offsetHeight || 500;
             const nearBottom = window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 200;
             floatingBar.classList.toggle('visible', window.scrollY > heroHeight && !nearBottom);
         });
