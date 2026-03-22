@@ -212,7 +212,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     top: 0;
     z-index: 1000;
     height: var(--header-h);
-    background: rgba(12, 5, 0, 0.0);
+    background: rgba(0, 0, 0, 0.0);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     border-bottom: 1px solid transparent;
@@ -224,11 +224,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 .site-header.scrolled {
-    background: rgba(12, 5, 0, 0.92);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-color: var(--border);
-    box-shadow: 0 1px 0 var(--border), 0 4px 32px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 32px rgba(0, 0, 0, 0.5);
 }
 
 .header-inner {
@@ -240,10 +240,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 .brand-logo {
     font-family: var(--font-display);
-    font-size: 1.55rem;
+    font-size: 2rem;
     font-weight: 800;
     color: var(--cream);
-    letter-spacing: -0.05em;
+    letter-spacing: -0.01em;
     text-transform: lowercase;
     flex-shrink: 0;
 }

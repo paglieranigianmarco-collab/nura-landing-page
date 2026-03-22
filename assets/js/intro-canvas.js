@@ -11,13 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('simple-intro');
     if (!overlay) return;
 
-    // Skip if already seen this session
-    if (sessionStorage.getItem('nura_seen')) {
-        overlay.style.display = 'none';
-        return;
-    }
-    sessionStorage.setItem('nura_seen', '1');
-
     document.body.style.overflow = 'hidden';
     overlay.style.background = '#000';
 
