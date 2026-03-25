@@ -1070,7 +1070,6 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     position: relative;
     z-index: 1;
     padding: 2rem 0;
-    margin: auto 0;
 }
 
 .club-title {
