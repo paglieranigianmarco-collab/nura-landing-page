@@ -2280,8 +2280,33 @@ html[data-lang="it"] .en { display: none; }
 
 
 /* ── 21. SCROLL SNAP ─────────────────────────────────────── */
-/* Removed: scroll-snap-type y mandatory kills free scrolling on mobile
-   and breaks ad-traffic UX where users need to scroll naturally. */
+/* Desktop: snap between sections for a premium editorial feel */
+html {
+    scroll-snap-type: y mandatory;
+}
+.hero-section,
+.pillars-section,
+.club-section {
+    scroll-snap-align: start;
+}
+.pillars-section {
+    min-height: 100svh;
+}
+
+/* Mobile: disable snap — social ad traffic needs free natural scrolling */
+@media (max-width: 768px) {
+    html {
+        scroll-snap-type: none;
+    }
+    .hero-section,
+    .pillars-section,
+    .club-section {
+        scroll-snap-align: none;
+    }
+    .pillars-section {
+        min-height: unset;
+    }
+}
 
 
 /* ── 22. MOBILE STICKY CTA BAR ───────────────────────────── */
