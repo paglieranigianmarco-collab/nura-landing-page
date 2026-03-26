@@ -440,6 +440,149 @@
             .quiz-main { padding-top: 6rem; }
             .btn-step-next { width: 100%; justify-content: center; }
         }
+
+        /* ── Box Preview ──────────────────────────────────────── */
+        .quiz-success { max-width: 640px; margin: 0 auto; }
+
+        .box-preview { text-align: left; margin-top: 2rem; }
+
+        .box-preview-headline {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--cream);
+            margin-bottom: 0.35rem;
+            line-height: 1.15;
+        }
+        .box-preview-headline em { font-style: normal; color: var(--amber-light); }
+
+        .box-preview-sub {
+            font-size: 0.9rem;
+            color: var(--cream-3);
+            font-weight: 300;
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        .box-budget-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(200, 80, 16, 0.1);
+            border: 1px solid rgba(200, 80, 16, 0.25);
+            color: var(--amber-light);
+            padding: 0.3rem 0.85rem;
+            border-radius: var(--r-pill);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.75rem;
+        }
+
+        .box-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .box-section {
+            border: 1px solid var(--border-mid);
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(245, 237, 224, 0.02);
+        }
+
+        .box-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid rgba(245, 237, 224, 0.06);
+        }
+
+        .box-section-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .box-section-label {
+            font-family: var(--font-display);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .box-products { padding: 0.25rem 0; }
+
+        .box-product {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid rgba(245, 237, 224, 0.04);
+        }
+        .box-product:last-child { border-bottom: none; }
+
+        .box-product-badge {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+            margin-top: 0.05rem;
+        }
+
+        .box-product-info { flex: 1; min-width: 0; }
+
+        .box-product-brand {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--cream-3);
+            margin-bottom: 0.1rem;
+        }
+
+        .box-product-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .box-product-desc {
+            font-size: 0.73rem;
+            color: rgba(245, 237, 224, 0.4);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .box-cta-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            color: var(--cream-3);
+            font-weight: 300;
+            text-align: center;
+            padding-top: 0.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .box-section-header { padding: 0.75rem 1rem; }
+            .box-product { padding: 0.75rem 1rem; gap: 0.75rem; }
+        }
     </style>
 </head>
 
@@ -492,7 +635,7 @@
                     </div>
                     <div class="pillar-card" data-pillar="energia" onclick="togglePillar(this)">
                         <span class="pillar-check"><i class="ph-fill ph-check"></i></span>
-                        <i class="ph-fill ph-lightning pillar-icon" style="color:#E88040"></i>
+                        <i class="ph-fill ph-lightning pillar-icon" style="color:#1BC9BE"></i>
                         <div class="pillar-card-name"><span class="it">Energia</span><span class="en">Energy</span></div>
                         <div class="pillar-card-desc">
                             <span class="it">Performance fisica, vitalità quotidiana, riduzione della fatica.</span>
@@ -620,14 +763,18 @@
             <div class="quiz-success" id="quizSuccess">
                 <div class="success-icon"><i class="ph-fill ph-check"></i></div>
                 <h2 class="success-title">
-                    <span class="it">Box prenotato.<br><em>Ci vediamo presto.</em></span>
-                    <span class="en">Box secured.<br><em>See you soon.</em></span>
+                    <span class="it">Posto assicurato.<br><em>Ecco il tuo box.</em></span>
+                    <span class="en">Spot secured.<br><em>Here's your box.</em></span>
                 </h2>
                 <p class="success-sub">
-                    <span class="it">Hai prenotato la tua nura.box con il 20% di sconto.<br>Ti contatteremo non appena sarà disponibile.</span>
-                    <span class="en">You've secured your nura.box with 20% off.<br>We'll be in touch as soon as it's ready.</span>
+                    <span class="it">Il tuo box è stato costruito attorno ai tuoi obiettivi.<br>Ti contatteremo al lancio con accesso prioritario e −20%.</span>
+                    <span class="en">Your box has been built around your goals.<br>We'll reach out at launch with priority access and −20% off.</span>
                 </p>
-                <a href="index.html" style="display:inline-flex;align-items:center;gap:0.5rem;color:var(--amber-light);font-weight:600;font-size:0.9rem;">
+
+                <!-- Personalized box preview, rendered by buildBoxPreview() -->
+                <div id="boxPreview"></div>
+
+                <a href="index.html" style="display:inline-flex;align-items:center;gap:0.5rem;color:var(--amber-light);font-weight:600;font-size:0.9rem;margin-top:1.5rem;">
                     <i class="ph ph-arrow-left"></i>
                     <span class="it">Torna alla home</span><span class="en">Back to home</span>
                 </a>
@@ -637,57 +784,196 @@
     </main>
 
     <script>
-        const state = { pillars: [], budget: null };
+        var state = { pillars: [], budget: null };
 
+        // ── Product library ───────────────────────────────────
+        var PILLARS = {
+            sonno: {
+                color: '#8B7CE8', icon: '🌙',
+                it: {
+                    name: 'Sonno',
+                    products: [
+                        { name: 'Magnesio Bisglicinate 400mg', brand: 'Thorne', desc: 'Forma altamente biodisponibile per rilassamento muscolare e sonno profondo.', tier: 1 },
+                        { name: 'Ashwagandha KSM-66', brand: 'Momentous', desc: 'Adattogeno clinicamente testato. Riduce cortisolo e migliora la qualità del sonno.', tier: 2 },
+                        { name: 'Glicina 3g', brand: 'Thorne', desc: 'Aminoacido che abbassa la temperatura corporea core per un addormentamento più rapido.', tier: 3 }
+                    ]
+                },
+                en: {
+                    name: 'Sleep',
+                    products: [
+                        { name: 'Magnesium Bisglycinate 400mg', brand: 'Thorne', desc: 'Highly bioavailable form for muscle relaxation and deep sleep support.', tier: 1 },
+                        { name: 'Ashwagandha KSM-66', brand: 'Momentous', desc: 'Clinically tested adaptogen. Reduces cortisol and improves sleep quality.', tier: 2 },
+                        { name: 'Glycine 3g', brand: 'Thorne', desc: 'Amino acid that lowers core body temperature for faster sleep onset.', tier: 3 }
+                    ]
+                }
+            },
+            energia: {
+                color: '#1BC9BE', icon: '⚡',
+                it: {
+                    name: 'Energia',
+                    products: [
+                        { name: 'Creatina Monoidrato 5g', brand: 'Thorne', desc: 'Standard d\'oro per forza, potenza e riduzione della fatica mentale.', tier: 1 },
+                        { name: 'LMNT Elettroliti', brand: 'LMNT', desc: 'Formula sodium-forward per idratazione ottimale e performance durante l\'allenamento.', tier: 2 },
+                        { name: 'CoQ10 Ubiquinolo 200mg', brand: 'Thorne', desc: 'Cofattore mitocondriale per produzione energetica cellulare avanzata.', tier: 3 }
+                    ]
+                },
+                en: {
+                    name: 'Energy',
+                    products: [
+                        { name: 'Creatine Monohydrate 5g', brand: 'Thorne', desc: 'Gold standard for strength, power and mental fatigue reduction.', tier: 1 },
+                        { name: 'LMNT Electrolytes', brand: 'LMNT', desc: 'Sodium-forward formula for optimal hydration and training performance.', tier: 2 },
+                        { name: 'CoQ10 Ubiquinol 200mg', brand: 'Thorne', desc: 'Mitochondrial cofactor for advanced cellular energy production.', tier: 3 }
+                    ]
+                }
+            },
+            focus: {
+                color: '#4AA8D4', icon: '🧠',
+                it: {
+                    name: 'Focus',
+                    products: [
+                        { name: "Lion's Mane 500mg", brand: 'Four Sigmatic', desc: 'Fungo adattogeno che stimola la sintesi di NGF per neuroplasticità e concentrazione.', tier: 1 },
+                        { name: 'L-Teanina + Caffeina', brand: 'Momentous', desc: 'Stack sinergetico per focus sostenuto senza ansia. Ratio 2:1 ottimale.', tier: 2 },
+                        { name: 'Alpha GPC 300mg', brand: 'Thorne', desc: 'Precursore dell\'acetilcolina per memoria, apprendimento e lucidità mentale.', tier: 3 }
+                    ]
+                },
+                en: {
+                    name: 'Focus',
+                    products: [
+                        { name: "Lion's Mane 500mg", brand: 'Four Sigmatic', desc: 'Adaptogenic mushroom that stimulates NGF synthesis for neuroplasticity and focus.', tier: 1 },
+                        { name: 'L-Theanine + Caffeine', brand: 'Momentous', desc: 'Synergistic stack for sustained focus without jitter. Optimal 2:1 ratio.', tier: 2 },
+                        { name: 'Alpha GPC 300mg', brand: 'Thorne', desc: 'Acetylcholine precursor for memory, learning and mental clarity.', tier: 3 }
+                    ]
+                }
+            },
+            longevita: {
+                color: '#3CB870', icon: '💚',
+                it: {
+                    name: 'Longevità',
+                    products: [
+                        { name: 'Omega-3 EPA/DHA 2g', brand: 'Thorne', desc: 'Acidi grassi essenziali per salute cardiovascolare, anti-infiammatorio e longevità cellulare.', tier: 1 },
+                        { name: 'Vitamina D3 + K2', brand: 'Thorne', desc: 'Duo sinergico per densità ossea, sistema immunitario e salute metabolica.', tier: 2 },
+                        { name: 'NMN 250mg', brand: 'Tru Niagen', desc: 'Precursore del NAD+ per il ripristino delle vie di longevità cellulare.', tier: 3 }
+                    ]
+                },
+                en: {
+                    name: 'Longevity',
+                    products: [
+                        { name: 'Omega-3 EPA/DHA 2g', brand: 'Thorne', desc: 'Essential fatty acids for cardiovascular health, anti-inflammation and cellular longevity.', tier: 1 },
+                        { name: 'Vitamin D3 + K2', brand: 'Thorne', desc: 'Synergistic duo for bone density, immune function and metabolic health.', tier: 2 },
+                        { name: 'NMN 250mg', brand: 'Tru Niagen', desc: 'NAD+ precursor for restoring cellular longevity pathways.', tier: 3 }
+                    ]
+                }
+            }
+        };
+
+        var BUDGET_MAX_TIER = { 'meno-20': 1, '20-50': 2, '50-100': 2, 'oltre-100': 3 };
+
+        // ── Render personalized box ───────────────────────────
+        function buildBoxPreview() {
+            var lang = document.documentElement.dataset.lang || 'it';
+            var maxTier = BUDGET_MAX_TIER[state.budget] || 1;
+            var container = document.getElementById('boxPreview');
+            if (!container) return;
+
+            var bLabel = budgetLabels[lang][state.budget] || '';
+            var html = '';
+
+            if (lang === 'it') {
+                html += '<p class="box-preview-headline">La tua <em>nura.box</em></p>';
+                html += '<p class="box-preview-sub">Curata per i tuoi obiettivi. Spedita al lancio.</p>';
+            } else {
+                html += '<p class="box-preview-headline">Your <em>nura.box</em></p>';
+                html += '<p class="box-preview-sub">Curated for your goals. Delivered at launch.</p>';
+            }
+
+            html += '<div class="box-budget-badge"><i class="ph-fill ph-tag"></i>&thinsp;' + bLabel + '&ensp;·&ensp;−20%</div>';
+            html += '<div class="box-sections">';
+
+            state.pillars.forEach(function(key) {
+                var p = PILLARS[key];
+                if (!p) return;
+                var d = p[lang] || p.it;
+                var prods = d.products.filter(function(x) { return x.tier <= maxTier; });
+
+                html += '<div class="box-section">';
+                html += '<div class="box-section-header">';
+                html += '<div class="box-section-dot" style="background:' + p.color + '"></div>';
+                html += '<span class="box-section-label" style="color:' + p.color + '">' + d.name + '</span>';
+                html += '</div><div class="box-products">';
+
+                prods.forEach(function(prod) {
+                    html += '<div class="box-product">';
+                    html += '<div class="box-product-badge" style="background:' + p.color + '1A">' + p.icon + '</div>';
+                    html += '<div class="box-product-info">';
+                    html += '<div class="box-product-brand">' + prod.brand + '</div>';
+                    html += '<div class="box-product-name">' + prod.name + '</div>';
+                    html += '<div class="box-product-desc">' + prod.desc + '</div>';
+                    html += '</div></div>';
+                });
+
+                html += '</div></div>';
+            });
+
+            html += '</div>';
+
+            var noteText = lang === 'it'
+                ? 'Il tuo 20% di sconto fondatori è riservato. Ti contatteremo al lancio.'
+                : 'Your 20% founders discount is reserved. We\'ll reach out at launch.';
+            html += '<p class="box-cta-note"><i class="ph ph-lock-simple"></i>&ensp;' + noteText + '</p>';
+
+            container.innerHTML = html;
+        }
+
+        // ── Pillar toggle ─────────────────────────────────────
         function togglePillar(card) {
             card.classList.toggle('selected');
-            const pillar = card.dataset.pillar;
+            var pillar = card.dataset.pillar;
             if (card.classList.contains('selected')) {
                 state.pillars.push(pillar);
             } else {
-                state.pillars = state.pillars.filter(p => p !== pillar);
+                state.pillars = state.pillars.filter(function(p) { return p !== pillar; });
             }
             document.getElementById('nextStep1').disabled = state.pillars.length === 0;
         }
 
         function selectBudget(option, value) {
-            document.querySelectorAll('.budget-option').forEach(o => o.classList.remove('selected'));
+            document.querySelectorAll('.budget-option').forEach(function(o) { o.classList.remove('selected'); });
             option.classList.add('selected');
             state.budget = value;
             document.getElementById('nextStep2').disabled = false;
         }
 
-        const pillarLabels = {
+        var pillarLabels = {
             it: { sonno: 'Sonno', energia: 'Energia', focus: 'Focus', longevita: 'Longevità' },
             en: { sonno: 'Sleep', energia: 'Energy', focus: 'Focus', longevita: 'Longevity' }
         };
-        const budgetLabels = {
+        var budgetLabels = {
             it: { 'meno-20': '< €20 / mese', '20-50': '€20–€50 / mese', '50-100': '€50–€100 / mese', 'oltre-100': '> €100 / mese' },
             en: { 'meno-20': '< €20 / mo', '20-50': '€20–€50 / mo', '50-100': '€50–€100 / mo', 'oltre-100': '> €100 / mo' }
         };
 
         function buildRecap() {
-            const lang = document.documentElement.dataset.lang || 'it';
-            const pills = document.getElementById('recapPills');
+            var lang = document.documentElement.dataset.lang || 'it';
+            var pills = document.getElementById('recapPills');
             pills.innerHTML = '';
-            state.pillars.forEach(p => {
-                const el = document.createElement('span');
+            state.pillars.forEach(function(p) {
+                var el = document.createElement('span');
                 el.className = 'recap-pill';
                 el.textContent = pillarLabels[lang][p] || p;
                 pills.appendChild(el);
             });
             if (state.budget) {
-                const el = document.createElement('span');
+                var el = document.createElement('span');
                 el.className = 'recap-pill';
                 el.textContent = budgetLabels[lang][state.budget];
                 pills.appendChild(el);
             }
         }
 
-        const progressMap = { 1: '33%', 2: '66%', 3: '100%' };
+        var progressMap = { 1: '33%', 2: '66%', 3: '100%' };
 
         function goToStep(n) {
-            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.quiz-step').forEach(function(s) { s.classList.remove('active'); });
             document.getElementById('step' + n).classList.add('active');
             document.getElementById('progressFill').style.width = progressMap[n];
             document.getElementById('stepLabel').textContent = n + ' / 3';
@@ -697,10 +983,16 @@
 
         function submitQuiz(e) {
             e.preventDefault();
-            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+            // Increment local signups counter for index.html scarcity
+            var cur = parseInt(localStorage.getItem('nura_local_signups') || '0');
+            localStorage.setItem('nura_local_signups', cur + 1);
+            // Show success screen
+            document.querySelectorAll('.quiz-step').forEach(function(s) { s.classList.remove('active'); });
             document.getElementById('quizSuccess').classList.add('active');
             document.getElementById('progressFill').style.width = '100%';
             document.getElementById('stepLabel').textContent = '✓';
+            // Build personalized box preview
+            buildBoxPreview();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -714,7 +1006,10 @@
                 document.documentElement.dataset.lang = next;
                 document.documentElement.lang = next;
                 localStorage.setItem('nura_lang', next);
-                if (document.getElementById('step3').classList.contains('active')) buildRecap();
+                var step3 = document.getElementById('step3');
+                var success = document.getElementById('quizSuccess');
+                if (step3 && step3.classList.contains('active')) buildRecap();
+                if (success && success.classList.contains('active')) buildBoxPreview();
             });
         })();
     </script>

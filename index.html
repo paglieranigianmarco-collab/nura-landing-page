@@ -253,11 +253,11 @@
                     <!-- Mobile-only scarcity indicator (founders card hidden on mobile) -->
                     <div class="mobile-scarcity">
                         <div class="mobile-scarcity-bar">
-                            <div class="mobile-scarcity-fill" style="width: 76.2%"></div>
+                            <div class="mobile-scarcity-fill" id="mobileScarcityFill" style="width: 76.2%"></div>
                         </div>
                         <p class="mobile-scarcity-label">
-                            <span class="it"><strong>423</strong> / 555 box già riservate — <em>solo 132 rimaste</em></span>
-                            <span class="en"><strong>423</strong> / 555 boxes reserved — <em>only 132 left</em></span>
+                            <span class="it"><strong id="mobileScarcityCount">423</strong> / 555 box già riservate — <em>solo <span id="mobileScarcityLeft">132</span> rimaste</em></span>
+                            <span class="en"><strong id="mobileScarcityCountEn">423</strong> / 555 boxes reserved — <em>only <span id="mobileScarcityLeftEn">132</span> left</em></span>
                         </p>
                     </div>
 
@@ -312,10 +312,10 @@
                     <div class="founders-card-wrap">
                     <div class="founders-card">
                         <span class="founders-card-label">nura.box</span>
-                        <div class="founders-card-number">423 <span class="founders-card-of">/ 555</span></div>
+                        <div class="founders-card-number"><span id="foundersCount">423</span> <span class="founders-card-of">/ 555</span></div>
                         <span class="founders-card-sub"><span class="it">box già riservate</span><span class="en">boxes already reserved</span></span>
                         <div class="founders-progress-bar">
-                            <div class="founders-progress-fill" style="width: 76.2%"></div>
+                            <div class="founders-progress-fill" id="foundersProgressFill" style="width: 76.2%"></div>
                         </div>
                         <div class="founders-card-badge">−20%</div>
                     </div>
@@ -340,7 +340,7 @@
                 <a href="#"><span class="it">Termini</span><span class="en">Terms</span></a>
             </div>
             <div class="footer-right">
-                <span class="footer-soon"><i class="ph ph-flag"></i> <span class="it">Coming Soon — Italia</span><span class="en">Coming Soon — Italy</span></span>
+                <span class="footer-soon"><i class="ph ph-sparkle"></i> <span class="it">Lancio esclusivo — Italia 2026</span><span class="en">Exclusive launch — Italy 2026</span></span>
                 <div class="footer-social">
                     <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
                     <a href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
@@ -419,8 +419,8 @@
             <i class="ph ph-arrow-right"></i>
         </a>
         <p class="mobile-sticky-cta-hint">
-            <span class="it">132 posti rimasti · −20% per i fondatori</span>
-            <span class="en">132 spots left · −20% for founders</span>
+            <span class="it"><span id="stickyScarcityLeft">132</span> posti rimasti · −20% per i fondatori</span>
+            <span class="en"><span id="stickyScarcityLeftEn">132</span> spots left · −20% for founders</span>
         </p>
     </div>
 
@@ -454,6 +454,10 @@
                 var existing = JSON.parse(localStorage.getItem('nura_club_emails') || '[]');
                 existing.push({ email: email, date: new Date().toISOString() });
                 localStorage.setItem('nura_club_emails', JSON.stringify(existing));
+                // Increment local signups counter for scarcity
+                var cur = parseInt(localStorage.getItem('nura_local_signups') || '0');
+                localStorage.setItem('nura_local_signups', cur + 1);
+                updateScarcityCounters();
                 var lang = document.documentElement.dataset.lang || 'it';
                 var btn = form.querySelector('.club-newsletter-btn');
                 btn.innerHTML = lang === 'it'
@@ -496,6 +500,56 @@
 
             obs.observe(clubSection);
         })();
+    </script>
+
+    <!-- Live scarcity counter — no backend required
+         Formula: base grows ~1 spot every 2 days since Feb 1 2026
+         + any local signups from this device = realtime feel -->
+    <script>
+        function getSpotsTaken() {
+            var start = new Date('2026-02-01T00:00:00Z');
+            var days = Math.max(0, Math.floor((Date.now() - start.getTime()) / 86400000));
+            var base = 395 + Math.floor(days / 2);
+            var local = parseInt(localStorage.getItem('nura_local_signups') || '0');
+            return Math.min(554, base + local);
+        }
+
+        function updateScarcityCounters() {
+            var total = 555;
+            var taken = getSpotsTaken();
+            var left = total - taken;
+            var pct = (taken / total * 100).toFixed(1) + '%';
+
+            // Founders card (desktop)
+            var fc = document.getElementById('foundersCount');
+            if (fc) fc.textContent = taken;
+
+            var fp = document.getElementById('foundersProgressFill');
+            if (fp) fp.style.width = pct;
+
+            // Mobile scarcity strip
+            var ms = document.getElementById('mobileScarcityCount');
+            if (ms) ms.textContent = taken;
+            var msEn = document.getElementById('mobileScarcityCountEn');
+            if (msEn) msEn.textContent = taken;
+
+            var ml = document.getElementById('mobileScarcityLeft');
+            if (ml) ml.textContent = left;
+            var mlEn = document.getElementById('mobileScarcityLeftEn');
+            if (mlEn) mlEn.textContent = left;
+
+            var mf = document.getElementById('mobileScarcityFill');
+            if (mf) mf.style.width = pct;
+
+            // Mobile sticky CTA hint
+            var sl = document.getElementById('stickyScarcityLeft');
+            if (sl) sl.textContent = left;
+            var slEn = document.getElementById('stickyScarcityLeftEn');
+            if (slEn) slEn.textContent = left;
+        }
+
+        // Run on page load
+        updateScarcityCounters();
     </script>
 
 </body>
