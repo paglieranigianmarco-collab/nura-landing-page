@@ -856,7 +856,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 @media (max-width: 640px) {
     .pillar-visual-wrap { gap: 0.55rem; }
     .pc { padding: 1.2rem; min-height: 140px; }
-    .pc-name { font-size: 1rem; }
+    /* 1.1rem = 17.6px minimum — legible headline on all mobile sizes */
+    .pc-name { font-size: 1.1rem; }
 }
 @media (max-width: 380px) {
     .pillar-visual-wrap { grid-template-columns: 1fr; }
@@ -2182,8 +2183,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 @media (max-width: 480px) {
-    .hero-trust { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
-    .club-benefits { flex-direction: column; gap: 0.75rem; }
+    /* hero-trust: keep horizontal, allow wrap — vertical stacking hurts mobile conversion */
+    .hero-trust { gap: 0.6rem 1rem; flex-wrap: wrap; align-items: center; }
+    /* club-benefits: wrap horizontally instead of stacking */
+    .club-benefits { flex-wrap: wrap; gap: 0.6rem; }
+    .benefit-item { white-space: normal; }
     /* pillar-visual-wrap height removed — grid layout is auto height */
     input, select, textarea { font-size: 16px; }
 
@@ -2276,14 +2280,157 @@ html[data-lang="it"] .en { display: none; }
 
 
 /* ── 21. SCROLL SNAP ─────────────────────────────────────── */
-html {
-    scroll-snap-type: y mandatory;
+/* Removed: scroll-snap-type y mandatory kills free scrolling on mobile
+   and breaks ad-traffic UX where users need to scroll naturally. */
+
+
+/* ── 22. MOBILE STICKY CTA BAR ───────────────────────────── */
+/* Always-visible bottom CTA for ad traffic (TikTok / Instagram).
+   Hidden on desktop — mobile-only conversion tool. */
+.mobile-sticky-cta {
+    display: none;
 }
-.hero-section,
-.pillars-section,
-.club-section {
-    scroll-snap-align: start;
+
+@media (max-width: 768px) {
+    .mobile-sticky-cta {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 800;
+        padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
+        /* Gradient fade so it doesn't hard-cut the page */
+        background: linear-gradient(to top, var(--dark) 55%, rgba(12,5,0,0.85) 100%);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+    }
+
+    /* Push page content above the sticky bar so nothing is hidden */
+    body {
+        padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Hide sticky bar when club CTA section is visible (JS adds .hidden) */
+    .mobile-sticky-cta.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(100%);
+        transition: opacity 0.3s, transform 0.3s var(--ease);
+    }
 }
-.pillars-section {
-    min-height: 100svh;
+
+.mobile-sticky-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: var(--amber);
+    color: var(--cream);
+    border-radius: var(--r-pill);
+    font-family: var(--font-body);
+    font-size: 0.97rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: 0 4px 28px rgba(192, 80, 16, 0.5);
+    transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.mobile-sticky-cta-btn:active {
+    transform: scale(0.97);
+    background: var(--amber-mid);
+    box-shadow: 0 2px 14px rgba(192, 80, 16, 0.4);
+}
+
+.mobile-sticky-cta-hint {
+    margin-top: 0.3rem;
+    text-align: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--cream-3);
+}
+
+
+/* ── 23. MOBILE SCARCITY STRIP ───────────────────────────── */
+/* Founders card (423/555) is hidden on mobile via club-visual display:none.
+   This inline strip brings the scarcity signal back into the content flow. */
+.mobile-scarcity {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .mobile-scarcity {
+        display: block;
+        margin: 0.75rem 0 1.5rem;
+    }
+
+    .mobile-scarcity-bar {
+        height: 5px;
+        background: rgba(245, 237, 224, 0.08);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 0.45rem;
+    }
+
+    .mobile-scarcity-fill {
+        height: 100%;
+        background: linear-gradient(to right, var(--amber), var(--amber-glow));
+        border-radius: 3px;
+    }
+
+    .mobile-scarcity-label {
+        font-size: 0.8rem;
+        color: var(--cream-3);
+        line-height: 1.5;
+    }
+
+    .mobile-scarcity-label strong {
+        color: var(--amber-light);
+        font-weight: 700;
+    }
+
+    .mobile-scarcity-label em {
+        color: var(--cream-2);
+        font-style: normal;
+    }
+}
+
+
+/* ── 24. SAFE AREA + PERFORMANCE ─────────────────────────── */
+
+/* iPhone notch / home bar: ensure footer isn't clipped */
+.site-footer {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+}
+
+/* GPU compositing for animated border cards — prevents jank during scroll */
+.pc-wrap {
+    will-change: transform, opacity;
+}
+
+/* Respect system preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .pc-wrap::before,
+    .founders-card-wrap::before {
+        animation: none;
+    }
+
+    .reveal-up,
+    .reveal-fade {
+        transition-duration: 0.01ms !important;
+    }
+
+    .pc-wrap {
+        transition-duration: 0.01ms !important;
+    }
+
+    .scroll-hint {
+        animation: none;
+    }
 }

@@ -250,6 +250,17 @@
                         <span class="en">Early access, permanent <strong>20% discount</strong> and a selection built precisely around your wellness profile — reserved for the first 555.</span>
                     </p>
 
+                    <!-- Mobile-only scarcity indicator (founders card hidden on mobile) -->
+                    <div class="mobile-scarcity">
+                        <div class="mobile-scarcity-bar">
+                            <div class="mobile-scarcity-fill" style="width: 76.2%"></div>
+                        </div>
+                        <p class="mobile-scarcity-label">
+                            <span class="it"><strong>423</strong> / 555 box già riservate — <em>solo 132 rimaste</em></span>
+                            <span class="en"><strong>423</strong> / 555 boxes reserved — <em>only 132 left</em></span>
+                        </p>
+                    </div>
+
                     <div class="club-benefits">
                         <div class="benefit-item">
                             <i class="ph-fill ph-tag"></i>
@@ -376,7 +387,20 @@
             <span class="brand-logo">nura.</span>
             <button class="mobile-nav-close" id="mobileNavClose"><i class="ph ph-x"></i></button>
         </div>
-        <nav class="mobile-nav-body"></nav>
+        <nav class="mobile-nav-body">
+            <a href="#pillars" class="mobile-nav-link" data-close-mobile>
+                <span class="it">La nostra selezione</span><span class="en">Our curation</span>
+                <i class="ph ph-caret-right" style="margin-left:auto;opacity:0.35;font-size:0.8rem"></i>
+            </a>
+            <a href="#nura-club" class="mobile-nav-link" data-close-mobile>
+                nura.box
+                <i class="ph ph-caret-right" style="margin-left:auto;opacity:0.35;font-size:0.8rem"></i>
+            </a>
+            <a href="#nura-club" class="mobile-nav-link" data-close-mobile>
+                nura.club
+                <i class="ph ph-caret-right" style="margin-left:auto;opacity:0.35;font-size:0.8rem"></i>
+            </a>
+        </nav>
         <div class="mobile-nav-footer">
             <a href="#nura-club" class="btn btn-amber" style="width:100%;text-align:center;" data-close-mobile>
                 <span class="it">Entra nel nura.club</span><span class="en">Join nura.club</span>
@@ -386,6 +410,19 @@
 
     <!-- Toast Container -->
     <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Mobile sticky CTA bar — primary conversion driver for social ad traffic -->
+    <div class="mobile-sticky-cta" id="mobileStickyCta">
+        <a href="quiz.html" class="mobile-sticky-cta-btn" id="mobileStickyCta-link">
+            <span class="it">Assicurati la tua nura.box</span>
+            <span class="en">Secure your nura.box</span>
+            <i class="ph ph-arrow-right"></i>
+        </a>
+        <p class="mobile-sticky-cta-hint">
+            <span class="it">132 posti rimasti · −20% per i fondatori</span>
+            <span class="en">132 spots left · −20% for founders</span>
+        </p>
+    </div>
 
     <script src="assets/js/drawers.js"></script>
 
@@ -429,13 +466,35 @@
         })();
     </script>
 
-    <!-- Pass UTM / ref params through to quiz.html -->
+    <!-- Pass UTM / ref params through to quiz.html (including mobile sticky CTA) -->
     <script>
         (function() {
             var qs = window.location.search;
             document.querySelectorAll('a[href="quiz.html"]').forEach(function(a) {
                 if (qs) a.href = 'quiz.html' + qs;
             });
+        })();
+    </script>
+
+    <!-- Mobile sticky CTA: hide when club CTA section is in view -->
+    <script>
+        (function() {
+            var bar = document.getElementById('mobileStickyCta');
+            if (!bar) return;
+            var clubSection = document.getElementById('nura-club');
+            if (!clubSection) return;
+
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        bar.classList.add('hidden');
+                    } else {
+                        bar.classList.remove('hidden');
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            obs.observe(clubSection);
         })();
     </script>
 
