@@ -38,7 +38,7 @@
     --fitness-c:  #E84444;
 
     /* Typography */
-    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-display: 'Rubik', sans-serif;
     --font-body:    'Libre Franklin', sans-serif;
 
     /* Motion */
@@ -91,75 +91,6 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 
-/* ── 3. INTRO OVERLAY ─────────────────────────────────────── */
-.simple-intro-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1.0s ease;
-}
-
-.simple-intro-overlay.hide-intro {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.intro-bg-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.intro-text-container {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1em;
-    user-select: none;
-}
-
-.intro-pre-text {
-    font-family: var(--font-body);
-    font-size: clamp(0.8rem, 1.6vw, 1.05rem);
-    font-weight: 300;
-    letter-spacing: 0.52em;
-    text-transform: uppercase;
-    color: rgba(232, 128, 64, 0.85);
-    opacity: 0;
-    transform: translateY(10px);
-    animation: introPreIn 0.85s 0.5s var(--ease) forwards;
-}
-
-.intro-brand {
-    font-family: var(--font-display);
-    font-size: clamp(5.5rem, 16vw, 14rem);
-    font-weight: 800;
-    letter-spacing: -0.065em;
-    color: var(--cream);
-    line-height: 0.88;
-    text-transform: lowercase;
-    opacity: 0;
-    transform: scale(0.22);
-    animation: introBrandIn 1.05s 1.35s cubic-bezier(0.22, 1.6, 0.36, 1) forwards;
-    text-shadow:
-        0 0 80px rgba(200, 80, 16, 0.2);
-}
-
-@keyframes introPreIn {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes introBrandIn {
-    to { opacity: 1; transform: scale(1); }
-}
 
 
 /* ── 4. ANNOUNCEMENT BAR ──────────────────────────────────── */
@@ -240,7 +171,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .brand-logo {
     font-family: var(--font-display);
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--cream);
     letter-spacing: -0.01em;
     text-transform: lowercase;
@@ -429,8 +360,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .hero-headline {
     font-family: var(--font-display);
     font-size: clamp(3.8rem, 8.5vw, 8rem);
-    font-weight: 800;
-    font-variation-settings: 'opsz' 96;
+    font-weight: 900;
     line-height: 0.95;
     letter-spacing: -0.04em;
     color: var(--cream);
@@ -442,7 +372,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 .hero-headline em {
     font-style: normal;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--amber-light);
     display: block;
     white-space: nowrap;
@@ -658,7 +588,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .pillars-headline {
     font-family: var(--font-display);
     font-size: clamp(2.2rem, 4.5vw, 3.75rem);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.04em;
     color: var(--cream);
     line-height: 1.1;
@@ -839,7 +769,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .pc-name {
     font-family: var(--font-display);
     font-size: clamp(1.1rem, 2vw, 1.35rem);
-    font-weight: 800;
+    font-weight: 900;
     line-height: 1.15;
     letter-spacing: -0.025em;
     color: var(--cream);
@@ -1004,7 +934,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .early-access-title {
     font-family: var(--font-display);
     font-size: clamp(2.2rem, 5vw, 3.75rem);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.04em;
     color: var(--cream);
     line-height: 1.1;
@@ -1118,6 +1048,139 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     font-size: 0.95rem;
 }
 
+/* ── Quiz styles ─────────────────────────────── */
+.quiz-step {
+    animation: quizFadeIn 0.35s var(--ease);
+}
+
+@keyframes quizFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-progress {
+    width: 100%;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.quiz-progress-fill {
+    display: block;
+    height: 100%;
+    background: var(--amber);
+    border-radius: 2px;
+    transition: width 0.4s var(--ease);
+}
+
+.quiz-goals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.quiz-goal-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1rem 1.25rem;
+    background: rgba(245, 237, 224, 0.04);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-md);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--cream-2);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.quiz-goal-btn:hover {
+    border-color: var(--border-amber);
+    background: rgba(200, 80, 16, 0.06);
+    color: var(--cream);
+}
+
+.quiz-goal-btn.selected {
+    border-color: var(--amber);
+    background: rgba(200, 80, 16, 0.12);
+    color: var(--cream);
+}
+
+.quiz-goal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gc);
+    flex-shrink: 0;
+}
+
+.quiz-next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--amber);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    border-radius: var(--r-pill);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s var(--ease-out-expo), opacity 0.2s;
+}
+
+.quiz-next-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.quiz-next-btn:not(:disabled):hover {
+    background: var(--amber-mid);
+    transform: translateY(-1px);
+}
+
+.quiz-age-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.quiz-age-btn {
+    padding: 1.1rem 1.25rem;
+    background: rgba(245, 237, 224, 0.04);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-md);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cream-2);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.quiz-age-btn:hover {
+    border-color: var(--border-amber);
+    background: rgba(200, 80, 16, 0.06);
+    color: var(--cream);
+}
+
+.quiz-age-btn.selected {
+    border-color: var(--amber);
+    background: rgba(200, 80, 16, 0.12);
+    color: var(--cream);
+    transform: scale(0.97);
+}
+
+@media (max-width: 480px) {
+    .quiz-goals { grid-template-columns: 1fr; }
+    .quiz-age-options { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 768px) {
     .early-access-inner { padding: 4rem 0; }
 
@@ -1167,7 +1230,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .section-title {
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3.25rem);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.04em;
     color: var(--cream);
     line-height: 1.15;

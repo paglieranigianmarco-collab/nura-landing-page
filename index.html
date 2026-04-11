@@ -8,12 +8,9 @@
     <meta name="description"
         content="nura cura i migliori brand di longevità al mondo. Selezionati per te, personalizzati sul tuo profilo di salute, consegnati in Italia.">
 
-    <!-- Restore language + skip intro for paid ad traffic -->
+    <!-- Restore language preference -->
     <script>
         (function () {
-            if (new URLSearchParams(window.location.search).get('ref')) {
-                sessionStorage.setItem('nura_seen', '1');
-            }
             var l = localStorage.getItem('nura_lang');
             if (l === 'en') {
                 document.documentElement.dataset.lang = 'en';
@@ -24,26 +21,18 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,400;12..96,600;12..96,700;12..96,800&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 
     <link rel="preload" as="image" href="assets/images/ComfyUI_00007_.webp">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <script defer src="assets/js/intro-canvas.js"></script>
     <script defer src="assets/js/pillar-orbit.js"></script>
     <script defer src="assets/js/script.js"></script>
 </head>
 
 <body>
-
-    <!-- ══════════════════════════════════════
-         INTRO OVERLAY — constellation "nura."
-         ══════════════════════════════════════ -->
-    <div id="simple-intro" class="simple-intro-overlay">
-        <canvas id="intro-canvas" class="intro-bg-canvas"></canvas>
-    </div>
 
     <!-- ══════════════════════════════════════
          HEADER
@@ -117,8 +106,8 @@
                         </div>
                         <p class="hero-email-hint">
                             <i class="ph-fill ph-tag"></i>
-                            <span class="it">Iscriviti e ricevi il <strong>15% di sconto</strong> sul primo ordine</span>
-                            <span class="en">Subscribe and get <strong>15% off</strong> your first order</span>
+                            <span class="it">Iscriviti e ricevi il <strong>20% di sconto</strong> sul primo ordine</span>
+                            <span class="en">Subscribe and get <strong>20% off</strong> your first order</span>
                         </p>
                     </form>
 
@@ -146,16 +135,16 @@
 
                 <div class="pillars-left reveal-up">
                     <span class="eyebrow eyebrow-amber">
-                        <span class="it">La nostra selezione</span>
-                        <span class="en">Our curation</span>
+                        <span class="it">4 pilastri</span>
+                        <span class="en">4 pillars</span>
                     </span>
                     <h2 class="pillars-headline">
                         <span class="it">Non vendiamo<br>integratori.<br><em>Selezioniamo<br>i migliori<br>al mondo.</em></span>
                         <span class="en">We don't sell<br>supplements.<br><em>We curate<br>the world's<br>best.</em></span>
                     </h2>
                     <p class="pillars-sub">
-                        <span class="it">Ogni brand della nostra selezione ha superato standard clinici rigidi — efficacia documentata, ingredienti trasparenti, qualità certificata.</span>
-                        <span class="en">Every brand in our selection has passed strict clinical standards — documented efficacy, transparent ingredients, certified quality.</span>
+                        <span class="it">Ogni brand nella piattaforma ha superato i nostri standard — efficacia clinica, ingredienti puri, risultati reali. Nessun compromesso.</span>
+                        <span class="en">Every brand on our platform has cleared our bar — clinical efficacy, clean ingredients, real results. No compromises.</span>
                     </p>
                 </div>
 
@@ -229,8 +218,8 @@
                         <span class="en">How it works</span>
                     </span>
                     <h2 class="section-title">
-                        <span class="it">Tre passi verso<br>il tuo <em>benessere.</em></span>
-                        <span class="en">Three steps to<br>your <em>wellness.</em></span>
+                        <span class="it">Semplice.<br><em>Per davvero.</em></span>
+                        <span class="en">Simple.<br><em>For real.</em></span>
                     </h2>
                 </div>
 
@@ -240,12 +229,12 @@
                         <div class="how-step-number">01</div>
                         <div class="how-step-icon"><i class="ph ph-target"></i></div>
                         <h3 class="how-step-title">
-                            <span class="it">Dicci i tuoi obiettivi</span>
-                            <span class="en">Tell us your goals</span>
+                            <span class="it">Rispondi al quiz</span>
+                            <span class="en">Take the quiz</span>
                         </h3>
                         <p class="how-step-desc">
-                            <span class="it">Sonno, energia, longevità, focus — ogni percorso di benessere è unico. Il tuo profilo personalizzato ci guida nella selezione.</span>
-                            <span class="en">Sleep, energy, longevity, focus — every wellness journey is unique. Your personalised profile guides our selection.</span>
+                            <span class="it">Sonno, energia, longevità, focus — dicci cosa conta per te. Bastano 30 secondi per creare il tuo profilo.</span>
+                            <span class="en">Sleep, energy, longevity, focus — tell us what matters. 30 seconds to build your profile.</span>
                         </p>
                     </div>
 
@@ -253,12 +242,12 @@
                         <div class="how-step-number">02</div>
                         <div class="how-step-icon"><i class="ph ph-flask"></i></div>
                         <h3 class="how-step-title">
-                            <span class="it">Selezioniamo per te</span>
-                            <span class="en">We curate for you</span>
+                            <span class="it">Noi facciamo il resto</span>
+                            <span class="en">We do the rest</span>
                         </h3>
                         <p class="how-step-desc">
-                            <span class="it">Analizziamo centinaia di brand internazionali. Solo quelli con standard clinici rigorosi, ingredienti trasparenti e risultati documentati entrano nella piattaforma.</span>
-                            <span class="en">We analyse hundreds of international brands. Only those with rigorous clinical standards, transparent ingredients and documented results make it onto the platform.</span>
+                            <span class="it">Centinaia di brand internazionali, filtrati per te. Solo quelli con standard clinici reali, ingredienti puri e risultati documentati.</span>
+                            <span class="en">Hundreds of international brands, filtered for you. Only those with real clinical standards, clean ingredients and proven results.</span>
                         </p>
                     </div>
 
@@ -266,12 +255,12 @@
                         <div class="how-step-number">03</div>
                         <div class="how-step-icon"><i class="ph ph-package"></i></div>
                         <h3 class="how-step-title">
-                            <span class="it">Consegnato a casa tua</span>
-                            <span class="en">Delivered to your door</span>
+                            <span class="it">Arriva a casa tua</span>
+                            <span class="en">Straight to your door</span>
                         </h3>
                         <p class="how-step-desc">
-                            <span class="it">I migliori integratori al mondo, finalmente disponibili in Italia. Spedizione veloce, packaging premium, tutto tracciato.</span>
-                            <span class="en">The world's best supplements, finally available in Italy. Fast shipping, premium packaging, fully tracked.</span>
+                            <span class="it">Il meglio della longevità mondiale, finalmente in Italia. Spedizione veloce, packaging premium, tutto tracciato.</span>
+                            <span class="en">The world's best longevity supplements, finally in Italy. Fast shipping, premium packaging, fully tracked.</span>
                         </p>
                     </div>
 
@@ -288,50 +277,125 @@
             <div class="early-access-bg" aria-hidden="true"></div>
             <div class="container early-access-inner">
 
-                <div class="early-access-content reveal-up">
-                    <span class="eyebrow eyebrow-amber">
-                        <span class="it">Accesso anticipato</span>
-                        <span class="en">Early access</span>
-                    </span>
-                    <h2 class="early-access-title">
-                        <span class="it">Sii tra i primi.<br><em>Ottieni il 15% di sconto.</em></span>
-                        <span class="en">Be among the first.<br><em>Get 15% off.</em></span>
-                    </h2>
-                    <p class="early-access-sub">
-                        <span class="it">Iscriviti alla newsletter per ricevere accesso anticipato alla piattaforma e uno sconto esclusivo del <strong>15%</strong> sul tuo primo ordine.</span>
-                        <span class="en">Subscribe to the newsletter for early access to the platform and an exclusive <strong>15% discount</strong> on your first order.</span>
-                    </p>
+                <div class="early-access-content reveal-up" id="quizContainer">
 
-                    <form class="early-access-form" id="earlyAccessForm">
-                        <div class="early-access-form-row">
-                            <input type="email" class="early-access-email" id="earlyAccessEmail"
-                                placeholder="la-tua@email.com" required autocomplete="email">
-                            <button type="submit" class="early-access-btn">
-                                <span class="it">Iscriviti</span><span class="en">Subscribe</span>
-                                <i class="ph ph-arrow-right"></i>
+                    <!-- Quiz Step 1: Goals -->
+                    <div class="quiz-step" id="quizStep1" data-step="1">
+                        <div class="quiz-progress"><span class="quiz-progress-fill" style="width:33%"></span></div>
+                        <span class="eyebrow eyebrow-amber">
+                            <span class="it">Step 1 di 3</span>
+                            <span class="en">Step 1 of 3</span>
+                        </span>
+                        <h2 class="early-access-title">
+                            <span class="it">Cosa vuoi<br><em>migliorare?</em></span>
+                            <span class="en">What do you want<br><em>to improve?</em></span>
+                        </h2>
+                        <p class="early-access-sub">
+                            <span class="it">Seleziona uno o più obiettivi.</span>
+                            <span class="en">Select one or more goals.</span>
+                        </p>
+                        <div class="quiz-goals">
+                            <button type="button" class="quiz-goal-btn" data-goal="sleep">
+                                <span class="quiz-goal-dot" style="--gc:var(--sleep-c)"></span>
+                                <span class="it">Sonno</span><span class="en">Sleep</span>
+                            </button>
+                            <button type="button" class="quiz-goal-btn" data-goal="energy">
+                                <span class="quiz-goal-dot" style="--gc:var(--energy-c)"></span>
+                                <span class="it">Energia</span><span class="en">Energy</span>
+                            </button>
+                            <button type="button" class="quiz-goal-btn" data-goal="longevity">
+                                <span class="quiz-goal-dot" style="--gc:var(--longevity-c)"></span>
+                                <span class="it">Longevità</span><span class="en">Longevity</span>
+                            </button>
+                            <button type="button" class="quiz-goal-btn" data-goal="focus">
+                                <span class="quiz-goal-dot" style="--gc:var(--focus-c)"></span>
+                                Focus
                             </button>
                         </div>
-                        <p class="early-access-fine">
-                            <i class="ph-fill ph-lock-simple"></i>
-                            <span class="it">Zero spam. Cancellati quando vuoi.</span>
-                            <span class="en">No spam. Unsubscribe anytime.</span>
-                        </p>
-                    </form>
+                        <button type="button" class="quiz-next-btn" id="quizNext1" disabled>
+                            <span class="it">Avanti</span><span class="en">Next</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </button>
+                    </div>
 
-                    <div class="early-access-benefits">
-                        <div class="benefit-item">
-                            <i class="ph-fill ph-tag"></i>
-                            <span><span class="it">15% di sconto sul primo ordine</span><span class="en">15% off your first order</span></span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="ph-fill ph-rocket-launch"></i>
-                            <span><span class="it">Accesso prioritario al lancio</span><span class="en">Priority access at launch</span></span>
-                        </div>
-                        <div class="benefit-item">
-                            <i class="ph-fill ph-sparkle"></i>
-                            <span><span class="it">Contenuti esclusivi sul benessere</span><span class="en">Exclusive wellness content</span></span>
+                    <!-- Quiz Step 2: Age -->
+                    <div class="quiz-step" id="quizStep2" data-step="2" style="display:none">
+                        <div class="quiz-progress"><span class="quiz-progress-fill" style="width:66%"></span></div>
+                        <span class="eyebrow eyebrow-amber">
+                            <span class="it">Step 2 di 3</span>
+                            <span class="en">Step 2 of 3</span>
+                        </span>
+                        <h2 class="early-access-title">
+                            <span class="it">Quanti anni<br><em>hai?</em></span>
+                            <span class="en">How old<br><em>are you?</em></span>
+                        </h2>
+                        <div class="quiz-age-options">
+                            <button type="button" class="quiz-age-btn" data-age="18-24">18–24</button>
+                            <button type="button" class="quiz-age-btn" data-age="25-34">25–34</button>
+                            <button type="button" class="quiz-age-btn" data-age="35-44">35–44</button>
+                            <button type="button" class="quiz-age-btn" data-age="45+">45+</button>
                         </div>
                     </div>
+
+                    <!-- Quiz Step 3: Email -->
+                    <div class="quiz-step" id="quizStep3" data-step="3" style="display:none">
+                        <div class="quiz-progress"><span class="quiz-progress-fill" style="width:100%"></span></div>
+                        <span class="eyebrow eyebrow-amber">
+                            <span class="it">Ultimo step</span>
+                            <span class="en">Last step</span>
+                        </span>
+                        <h2 class="early-access-title">
+                            <span class="it">Il tuo <em>20%</em> ti aspetta.</span>
+                            <span class="en">Your <em>20%</em> is waiting.</span>
+                        </h2>
+                        <p class="early-access-sub">
+                            <span class="it">Lascia la tua email e ricevi lo sconto + accesso anticipato alla piattaforma.</span>
+                            <span class="en">Drop your email and get the discount + early access to the platform.</span>
+                        </p>
+                        <form class="early-access-form" id="earlyAccessForm">
+                            <div class="early-access-form-row">
+                                <input type="email" class="early-access-email" id="earlyAccessEmail"
+                                    placeholder="la-tua@email.com" required autocomplete="email">
+                                <button type="submit" class="early-access-btn">
+                                    <span class="it">Ottieni il 20%</span><span class="en">Get 20%</span>
+                                    <i class="ph ph-arrow-right"></i>
+                                </button>
+                            </div>
+                            <p class="early-access-fine">
+                                <i class="ph-fill ph-lock-simple"></i>
+                                <span class="it">Zero spam. Cancellati quando vuoi.</span>
+                                <span class="en">No spam. Unsubscribe anytime.</span>
+                            </p>
+                        </form>
+                    </div>
+
+                    <!-- Quiz Success -->
+                    <div class="quiz-step" id="quizSuccess" style="display:none">
+                        <div class="quiz-progress"><span class="quiz-progress-fill" style="width:100%"></span></div>
+                        <h2 class="early-access-title">
+                            <span class="it"><em>Ci sei.</em></span>
+                            <span class="en"><em>You're in.</em></span>
+                        </h2>
+                        <p class="early-access-sub">
+                            <span class="it">Riceverai il tuo codice sconto via email. Benvenuto nella community nura.</span>
+                            <span class="en">You'll receive your discount code by email. Welcome to the nura community.</span>
+                        </p>
+                        <div class="early-access-benefits">
+                            <div class="benefit-item">
+                                <i class="ph-fill ph-check-circle"></i>
+                                <span><span class="it">20% di sconto sul primo ordine</span><span class="en">20% off your first order</span></span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="ph-fill ph-check-circle"></i>
+                                <span><span class="it">Accesso prioritario al lancio</span><span class="en">Priority access at launch</span></span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="ph-fill ph-check-circle"></i>
+                                <span><span class="it">Contenuti esclusivi sul benessere</span><span class="en">Exclusive wellness content</span></span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -348,14 +412,15 @@
             <a href="#" class="brand-logo footer-logo">nura.</a>
             <div class="footer-links">
                 <a href="mailto:hello@nura.life">hello@nura.life</a>
-                <a href="#"><span class="it">Privacy</span><span class="en">Privacy</span></a>
-                <a href="#"><span class="it">Termini</span><span class="en">Terms</span></a>
+                <a href="/privacy.html"><span class="it">Privacy Policy</span><span class="en">Privacy Policy</span></a>
+                <a href="/terms.html"><span class="it">Termini e Condizioni</span><span class="en">Terms & Conditions</span></a>
+                <a href="/cookies.html"><span class="it">Cookie Policy</span><span class="en">Cookie Policy</span></a>
             </div>
             <div class="footer-right">
                 <span class="footer-soon"><i class="ph ph-sparkle"></i> <span class="it">Lancio esclusivo — Italia 2026</span><span class="en">Exclusive launch — Italy 2026</span></span>
                 <div class="footer-social">
-                    <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
+                    <a href="https://instagram.com/nura.shop.it" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="https://tiktok.com/@nurashop.it" target="_blank" rel="noopener" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
                 </div>
             </div>
         </div>
@@ -405,8 +470,8 @@
     <!-- Mobile sticky CTA bar -->
     <div class="mobile-sticky-cta" id="mobileStickyCta">
         <a href="#early-access" class="mobile-sticky-cta-btn" id="mobileStickyCta-link">
-            <span class="it">Iscriviti — 15% di sconto</span>
-            <span class="en">Subscribe — 15% off</span>
+            <span class="it">Iscriviti — 20% di sconto</span>
+            <span class="en">Subscribe — 20% off</span>
             <i class="ph ph-arrow-right"></i>
         </a>
         <p class="mobile-sticky-cta-hint">
@@ -432,13 +497,16 @@
         })();
     </script>
 
-    <!-- Early access newsletter form — Supabase -->
+    <!-- Quiz + newsletter — Supabase -->
     <script>
         (function() {
             var SUPABASE_URL = 'https://uructgabqrfpcdcdosdz.supabase.co';
             var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVydWN0Z2FicXJmcGNkY2Rvc2R6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5MTMxMTAsImV4cCI6MjA5MTQ4OTExMH0.KwCCJ05WcrYu7cPRZ-ejlL_8Z-upGn32N2z1F5GTQFA';
 
-            function submitToSupabase(email, source) {
+            // Quiz state
+            var quizData = { goals: [], age_range: null };
+
+            function submitToSupabase(data) {
                 var lang = document.documentElement.dataset.lang || 'it';
                 return fetch(SUPABASE_URL + '/rest/v1/subscribers', {
                     method: 'POST',
@@ -448,79 +516,116 @@
                         'Authorization': 'Bearer ' + SUPABASE_KEY,
                         'Prefer': 'return=minimal'
                     },
-                    body: JSON.stringify({
-                        email: email,
-                        source: source,
-                        lang: lang
-                    })
+                    body: JSON.stringify(Object.assign({ lang: lang }, data))
                 });
             }
 
-            function handleEmailSubmit(formId, emailId, source) {
-                var form = document.getElementById(formId);
-                if (!form) return;
-                form.addEventListener('submit', function(e) {
+            // --- Quiz logic ---
+            var goalBtns = document.querySelectorAll('.quiz-goal-btn');
+            var nextBtn1 = document.getElementById('quizNext1');
+
+            goalBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    btn.classList.toggle('selected');
+                    var goal = btn.dataset.goal;
+                    var idx = quizData.goals.indexOf(goal);
+                    if (idx > -1) quizData.goals.splice(idx, 1);
+                    else quizData.goals.push(goal);
+                    if (nextBtn1) nextBtn1.disabled = quizData.goals.length === 0;
+                });
+            });
+
+            if (nextBtn1) {
+                nextBtn1.addEventListener('click', function() {
+                    showStep(2);
+                });
+            }
+
+            document.querySelectorAll('.quiz-age-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.quiz-age-btn').forEach(function(b) { b.classList.remove('selected'); });
+                    btn.classList.add('selected');
+                    quizData.age_range = btn.dataset.age;
+                    setTimeout(function() { showStep(3); }, 300);
+                });
+            });
+
+            function showStep(n) {
+                document.querySelectorAll('.quiz-step').forEach(function(s) { s.style.display = 'none'; });
+                var target = document.getElementById('quizStep' + n);
+                if (target) target.style.display = '';
+            }
+
+            // --- Hero email (simple, no quiz) ---
+            var heroForm = document.getElementById('heroEmailForm');
+            if (heroForm) {
+                heroForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    var emailInput = document.getElementById(emailId);
+                    var emailInput = document.getElementById('heroEmail');
                     var email = emailInput ? emailInput.value.trim().toLowerCase() : '';
                     if (!email) return;
-
-                    var btn = form.querySelector('button[type="submit"]');
+                    var btn = heroForm.querySelector('button[type="submit"]');
                     if (btn) btn.disabled = true;
 
-                    submitToSupabase(email, source)
+                    submitToSupabase({ email: email, source: 'hero' })
                         .then(function(res) {
                             var lang = document.documentElement.dataset.lang || 'it';
-
                             if (res.ok || res.status === 409) {
-                                // Success or duplicate — both are fine
                                 if (btn) {
                                     btn.innerHTML = lang === 'it'
                                         ? '<i class="ph-fill ph-check-circle"></i> Sei dentro!'
                                         : '<i class="ph-fill ph-check-circle"></i> You\'re in!';
                                     btn.style.background = 'var(--longevity-c)';
-                                    btn.style.borderColor = 'var(--longevity-c)';
                                 }
                                 if (emailInput) emailInput.disabled = true;
-
-                                if (typeof window.showToast === 'function') {
-                                    window.showToast(
-                                        lang === 'it'
-                                            ? 'Iscritto! Riceverai il tuo codice sconto via email.'
-                                            : 'Subscribed! You\'ll receive your discount code by email.',
-                                        'success', 'ph-sparkle'
-                                    );
-                                }
                             } else {
-                                // Unexpected error — re-enable
                                 if (btn) btn.disabled = false;
-                                if (typeof window.showToast === 'function') {
-                                    window.showToast(
-                                        lang === 'it'
-                                            ? 'Qualcosa è andato storto. Riprova.'
-                                            : 'Something went wrong. Please try again.',
-                                        'info', 'ph-warning'
-                                    );
-                                }
                             }
                         })
-                        .catch(function() {
-                            if (btn) btn.disabled = false;
+                        .catch(function() { if (btn) btn.disabled = false; });
+                });
+            }
+
+            // --- Quiz email submit (with quiz data) ---
+            var quizForm = document.getElementById('earlyAccessForm');
+            if (quizForm) {
+                quizForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var emailInput = document.getElementById('earlyAccessEmail');
+                    var email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+                    if (!email) return;
+                    var btn = quizForm.querySelector('button[type="submit"]');
+                    if (btn) btn.disabled = true;
+
+                    submitToSupabase({
+                        email: email,
+                        source: 'quiz',
+                        goals: quizData.goals,
+                        age_range: quizData.age_range
+                    })
+                    .then(function(res) {
+                        if (res.ok || res.status === 409) {
+                            // Show success step
+                            document.querySelectorAll('.quiz-step').forEach(function(s) { s.style.display = 'none'; });
+                            var success = document.getElementById('quizSuccess');
+                            if (success) success.style.display = '';
+
                             var lang = document.documentElement.dataset.lang || 'it';
                             if (typeof window.showToast === 'function') {
                                 window.showToast(
                                     lang === 'it'
-                                        ? 'Errore di rete. Controlla la connessione.'
-                                        : 'Network error. Check your connection.',
-                                    'info', 'ph-wifi-slash'
+                                        ? 'Iscritto! Riceverai il tuo codice sconto via email.'
+                                        : 'Subscribed! You\'ll receive your discount code by email.',
+                                    'success', 'ph-sparkle'
                                 );
                             }
-                        });
+                        } else {
+                            if (btn) btn.disabled = false;
+                        }
+                    })
+                    .catch(function() { if (btn) btn.disabled = false; });
                 });
             }
-
-            handleEmailSubmit('heroEmailForm', 'heroEmail', 'hero');
-            handleEmailSubmit('earlyAccessForm', 'earlyAccessEmail', 'early-access');
         })();
     </script>
 
