@@ -38,7 +38,7 @@
     --fitness-c:  #E84444;
 
     /* Typography */
-    --font-display: 'Rubik', sans-serif;
+    --font-display: 'Nunito', sans-serif;
     --font-body:    'Libre Franklin', sans-serif;
 
     /* Motion */
@@ -171,7 +171,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .brand-logo {
     font-family: var(--font-display);
     font-size: 2rem;
-    font-weight: 900;
+    font-weight: 1000;
     color: var(--cream);
     letter-spacing: -0.01em;
     text-transform: lowercase;
@@ -360,7 +360,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .hero-headline {
     font-family: var(--font-display);
     font-size: clamp(3.8rem, 8.5vw, 8rem);
-    font-weight: 900;
+    font-weight: 1000;
     line-height: 0.95;
     letter-spacing: -0.04em;
     color: var(--cream);
@@ -372,7 +372,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 .hero-headline em {
     font-style: normal;
-    font-weight: 900;
+    font-weight: 1000;
     color: var(--amber-light);
     display: block;
     white-space: nowrap;
