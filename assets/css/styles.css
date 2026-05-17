@@ -95,21 +95,25 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ── 4. ANNOUNCEMENT BAR ──────────────────────────────────── */
 .announcement-bar {
-    background: transparent;
-    border-bottom: 1px solid transparent;
+    background: rgba(12, 5, 0, 0.62);
+    border-bottom: 1px solid rgba(245, 237, 224, 0.08);
     color: var(--cream-2);
     height: var(--announcement-h);
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
 }
 
 .announcement-track {
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 1.35rem;
     white-space: nowrap;
-    animation: marqueeScroll 30s linear infinite;
-    padding-left: 100%;
+    padding: 0 1.25rem;
 }
 
 @keyframes marqueeScroll {
@@ -280,8 +284,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     width: 100%;
     height: 100%;
     background-image: url('../images/ComfyUI_00007_.webp');
-    background-size: cover;
-    background-position: 80% center;
+    background-size: 105% auto;
+    background-position: 85% center;
     z-index: -1;
 }
 
@@ -291,8 +295,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     background:
         linear-gradient(to right,
             rgba(12, 5, 0, 0.88) 0%,
-            rgba(12, 5, 0, 0.65) 45%,
-            rgba(12, 5, 0, 0.22) 70%,
+            rgba(12, 5, 0, 0.70) 44%,
+            rgba(12, 5, 0, 0.20) 72%,
             rgba(12, 5, 0, 0.08) 100%),
         linear-gradient(to top,
             rgba(12, 5, 0, 0.28) 0%,
@@ -535,7 +539,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ── 7. PILLARS SECTION ───────────────────────────────────── */
 .pillars-section {
-    padding: 9rem 0;
+    padding: 7rem 0 6rem;
     background: linear-gradient(to bottom, rgba(12,5,0,0.92) 0%, rgba(12,5,0,0.80) 100%);
     position: relative;
     overflow: hidden;
@@ -900,7 +904,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* ── 7c. EARLY ACCESS SECTION ────────────────────────────── */
 .early-access-section {
     padding: 0;
-    min-height: 100svh;
+    min-height: auto;
     background: var(--dark);
     position: relative;
     overflow: hidden;
@@ -922,7 +926,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .early-access-inner {
     display: flex;
     justify-content: flex-start;
-    padding: 6rem 1.5rem;
+    padding: 5rem 1.5rem 5.5rem;
     max-width: var(--container-max);
     margin: 0 auto;
 }
@@ -1811,7 +1815,7 @@ html {
     scroll-snap-align: start;
 }
 .pillars-section {
-    min-height: 100svh;
+    min-height: auto;
 }
 
 /* Mobile: disable snap — social ad traffic needs free natural scrolling */
@@ -1906,6 +1910,129 @@ html {
 
 
 /* ── 24. SAFE AREA + PERFORMANCE ─────────────────────────── */
+
+
+/* ── NURA REBUILD: premium 5-pillar editorial section ─────── */
+:root {
+    --beauty-c: #d8a0c8;
+}
+
+.pillar-list {
+    width: min(100%, 620px);
+    border-top: 1px solid rgba(245, 237, 224, 0.14);
+}
+
+.pillar-row {
+    display: block;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid rgba(245, 237, 224, 0.12);
+    position: relative;
+    transition: transform 0.24s var(--ease-out-expo), border-color 0.24s, opacity 0.24s;
+}
+
+.pillar-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--pillar-accent), transparent);
+    transition: width 0.3s var(--ease-out-expo);
+}
+
+.pillar-row:hover {
+    transform: translateX(8px);
+    border-bottom-color: rgba(245, 237, 224, 0.2);
+}
+
+.pillar-row:hover::before {
+    width: 100%;
+}
+
+.pillar-copy h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    color: var(--cream);
+    margin-bottom: 0.35rem;
+}
+
+.pillar-copy p {
+    color: var(--cream-3);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    max-width: 440px;
+}
+
+.coming-soon-social {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    color: var(--cream-3);
+    font-size: 0.86rem;
+    margin-top: 2rem;
+}
+
+.coming-soon-social > span {
+    color: var(--cream-2);
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+
+.coming-soon-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--amber-light);
+    border-bottom: 1px solid rgba(232, 128, 64, 0.32);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.coming-soon-social a:hover {
+    color: var(--amber-glow);
+    border-color: var(--amber-glow);
+    transform: translateY(-1px);
+}
+
+.early-access-content.submitted > .eyebrow,
+.early-access-content.submitted > .early-access-title,
+.early-access-content.submitted > .early-access-sub,
+.early-access-content.submitted > .early-access-form,
+.early-access-content.submitted > .coming-soon-social {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .pillars-right { order: initial; }
+    .pillar-list { width: 100%; }
+}
+
+@media (max-width: 640px) {
+    .hero-bg-image {
+        background-position: 72% center;
+    }
+
+    .pillar-row {
+        padding: 1.1rem 0;
+    }
+
+    .pillar-row:hover {
+        transform: none;
+    }
+
+    .pillar-copy p {
+        font-size: 0.9rem;
+    }
+
+    .coming-soon-social {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
 
 /* iPhone notch / home bar: ensure footer isn't clipped */
 .site-footer {
