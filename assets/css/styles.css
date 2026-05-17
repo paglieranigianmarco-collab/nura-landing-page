@@ -99,21 +99,20 @@ body::after {
     height: 100svh;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.46;
+    opacity: 0.82;
     mix-blend-mode: screen;
-    filter: saturate(115%) contrast(110%);
+    filter: saturate(130%) contrast(118%) blur(0.1px);
 }
 
 .announcement-bar,
 .site-header,
-main,
 .site-footer,
 .mobile-nav-drawer,
 .drawer-overlay,
 .mobile-sticky-cta,
 .toast-container {
     position: relative;
-    z-index: 2;
+    z-index: 4;
 }
 
 img  { max-width: 100%; display: block; }
@@ -324,20 +323,22 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     background-size: 105% auto;
     background-position: 85% center;
     z-index: 0;
+    opacity: 0.74;
 }
 
 .hero-gradient {
     position: absolute;
     inset: 0;
     background:
+        radial-gradient(circle at 74% 34%, rgba(232, 128, 64, 0.20) 0%, transparent 34%),
         linear-gradient(to right,
-            rgba(12, 5, 0, 0.88) 0%,
-            rgba(12, 5, 0, 0.70) 44%,
-            rgba(12, 5, 0, 0.20) 72%,
-            rgba(12, 5, 0, 0.08) 100%),
+            rgba(12, 5, 0, 0.82) 0%,
+            rgba(12, 5, 0, 0.62) 44%,
+            rgba(12, 5, 0, 0.16) 72%,
+            rgba(12, 5, 0, 0.04) 100%),
         linear-gradient(to top,
-            rgba(12, 5, 0, 0.28) 0%,
-            rgba(12, 5, 0, 0.08) 20%,
+            rgba(12, 5, 0, 0.22) 0%,
+            rgba(12, 5, 0, 0.05) 20%,
             transparent 45%);
     z-index: 1;
 }

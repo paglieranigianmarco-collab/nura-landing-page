@@ -220,9 +220,9 @@ function initNuraEnergyCanvas() {
         ctx.fillRect(0, 0, width, height);
         ctx.globalCompositeOperation = 'lighter';
 
-        drawBlob(width * (0.72 + Math.sin(time * 0.20) * 0.025), height * 0.30, width * 0.42, height * 0.52, time * 0.9, 'rgba(232,128,64,0.22)', 'rgba(192,80,16,0.11)', 0.86);
-        drawBlob(width * 0.28, height * (0.74 + Math.cos(time * 0.18) * 0.025), width * 0.34, height * 0.42, time * 0.75 + 2.0, 'rgba(200,80,16,0.16)', 'rgba(245,237,224,0.045)', 0.76);
-        drawBlob(width * 0.54, height * 0.52, width * 0.55, height * 0.34, time * 0.45 + 4.0, 'rgba(240,160,96,0.08)', 'rgba(192,80,16,0.08)', 0.66);
+        drawBlob(width * (0.72 + Math.sin(time * 0.20) * 0.025), height * 0.30, width * 0.42, height * 0.52, time * 0.9, 'rgba(245,150,78,0.38)', 'rgba(192,80,16,0.22)', 0.95);
+        drawBlob(width * 0.28, height * (0.74 + Math.cos(time * 0.18) * 0.025), width * 0.34, height * 0.42, time * 0.75 + 2.0, 'rgba(224,96,28,0.25)', 'rgba(245,237,224,0.07)', 0.84);
+        drawBlob(width * 0.54, height * 0.52, width * 0.55, height * 0.34, time * 0.45 + 4.0, 'rgba(255,182,116,0.14)', 'rgba(192,80,16,0.16)', 0.78);
 
         rings.forEach((ring) => drawRing(ring, time));
 
