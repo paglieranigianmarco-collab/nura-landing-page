@@ -966,6 +966,24 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     margin-bottom: 2.5rem;
 }
 
+.founding-intent {
+    margin-bottom: 1.25rem;
+}
+
+.founding-intent-label {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-2);
+    margin-bottom: 0.9rem;
+}
+
+.founding-goals {
+    margin-bottom: 1.25rem;
+}
+
 .early-access-form-row {
     display: flex;
     align-items: center;

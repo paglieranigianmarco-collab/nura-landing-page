@@ -13,6 +13,9 @@ build/
 .env.production
 .env.development
 
+# Supabase local CLI state
+supabase/.temp/
+
 # OS junk
 .DS_Store
 Thumbs.db
@@ -29,9 +32,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Not part of the landing page (kept locally, not in git)
-UI-design/
-nura-business-model/
-nura-waitlist/
+# Pre-pivot reference (kept locally, not in git)
+archive/
+
+# Playwright tool install (local only)
+.playwright-cli/
+
+# Local-only docs/workflows (kept locally, not in git)
 docs/
 .agents/

@@ -4,16 +4,18 @@ Purpose: store early-access / coming-soon registrations from the static Nura lan
 
 ## Current status
 
-The landing page currently contains a Supabase project URL and anon key, but the hostname does not resolve from this machine:
+Supabase CLI is linked to the live Nura project:
 
-`https://uructgabqrfpcdcdosdz.supabase.co`
+`uructgabqrfpcdcdosdz` / `https://uructgabqrfpcdcdosdz.supabase.co`
 
-That means either:
-- the Supabase project was deleted/paused/renamed,
-- the URL is wrong,
-- or DNS/network is temporarily failing.
+Verified from CLI on 2026-05-17:
+- project exists and is `ACTIVE_HEALTHY`
+- local repo is linked to the Nura project ref
+- public RPC `/rest/v1/rpc/register_waitlist_signup` returns `200` and stores a test signup
 
-Do not launch paid traffic until this is fixed. A beautiful landing page that loses emails is just expensive wallpaper.
+Do not launch paid traffic unless the landing-page signup test still returns `200`. A beautiful landing page that loses emails is just expensive wallpaper.
+
+Note: the remote Supabase migration history has older timestamped migrations not present locally (`20260411170543`, `20260411174235`). `supabase db push` is blocked until migration history is repaired or synced. The live waitlist RPC itself is working.
 
 ## Files
 
