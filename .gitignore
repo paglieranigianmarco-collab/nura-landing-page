@@ -41,3 +41,4 @@ archive/
 # Local-only docs/workflows (kept locally, not in git)
 docs/
 .agents/
+.vercel
